@@ -1,124 +1,44 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Dashboard Wedang Ronde</title>
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body>
-   <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Wedang Ronde</title>
-    <!-- <link rel="stylesheet" href="style.css"> -->
-<body>
-    <!DOCTYPE html>
-    <html lang="id">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Wedang Ronde</title>
-        <style>
-            * {
-                margin: 0;
-                padding: 0;
-                box-sizing: border-box;
-                font-family: Arial, sans-serif;
-            }
-    
-            body {
-                background-color: #f9f9f9;
-            }
-    
-            /* Navbar */
-            nav {
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
-                background-color: white;
-                padding: 15px 50px;
-                box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-            }
-    
-            .menu {
-                list-style: none;
-                display: flex;
-                gap: 20px;
-            }
-    
-            .menu li {
-                display: inline;
-            }
-    
-            .menu a {
-                text-decoration: none;
-                color: black;
-                font-size: 16px;
-                font-weight: bold;
-            }
-    
-            .menu a:hover {
-                color: #ff6600;
-            }
-    
-            .logo {
-                font-size: 24px;
-                font-weight: bold;
-                color: #ff6600;
-            }
-    
-            /* Hero Section */
-            .hero {
-                text-align: center;
-                padding: 100px 20px;
-            }
-    
-            .hero h1 {
-                font-size: 40px;
-                color: #333;
-            }
-    
-            .hero p {
-                font-size: 18px;
-                color: #666;
-                margin-top: 10px;
-            }
-    
-            .hero button {
-                margin-top: 20px;
-                padding: 10px 20px;
-                font-size: 18px;
-                background-color: #ff6600;
-                color: white;
-                border: none;
-                cursor: pointer;
-                border-radius: 5px;
-            }
-
-            .hero button:hover {
-                background-color: #e65c00;
-            }
-        </style>
-    </head>
-    <body>
-        <nav>
-            <ul class="menu">
-                <li><a href="#">Home</a></li>
-                <li><a href="#">Menu</a></li>
-                <li><a href="#">Pembayaran</a></li>
+<body class="bg-gray-100">
+    <div class="flex h-screen">
+        <!-- Sidebar -->
+        <div class="w-64 bg-blue-900 text-white p-5">
+            <h2 class="text-2xl font-bold">Wedang Ronde</h2>
+            <ul class="mt-5 space-y-3">
+                <li><a href="#" class="block py-2 px-3 rounded hover:bg-blue-700">Dashboard</a></li>
+                <li><a href="#" class="block py-2 px-3 rounded hover:bg-blue-700">Menu</a></li>
+                <li><a href="#" class="block py-2 px-3 rounded hover:bg-blue-700">Pesanan</a></li>
+                <li><a href="#" class="block py-2 px-3 rounded hover:bg-blue-700">Laporan</a></li>
             </ul>
-            <div class="logo">Wedang Ronde</div>
-        </nav>
-        <section class="hero">
-            <h1>Selamat Datang di Wedang Ronde</h1>
-            <p>Rasakan kehangatan wedang ronde khas tradisional.</p>
-            <button>Pesan Sekarang</button>
-        </section>
-    </body>
-    </html>
-</body>
-</html>
+        </div>
+        
+        <!-- Konten Utama -->
+        <div class="flex-1 p-6">
+            <h1 class="text-3xl font-semibold text-gray-800">Selamat Datang di Dashboard</h1>
+            <p class="text-gray-600 mt-2">Kelola bisnis wedang ronde dengan mudah.</p>
+            
+            <div class="grid grid-cols-3 gap-4 mt-6">
+                <div class="bg-white p-5 rounded shadow">
+                    <h3 class="text-lg font-semibold">Total Pesanan</h3>
+                    <p class="text-2xl font-bold">120</p>
+                </div>
+                <div class="bg-white p-5 rounded shadow">
+                    <h3 class="text-lg font-semibold">Pendapatan</h3>
+                    <p class="text-2xl font-bold">Rp 5.000.000</p>
+                </div>
+                <div class="bg-white p-5 rounded shadow">
+                    <h3 class="text-lg font-semibold">Stok Bahan</h3>
+                    <p class="text-2xl font-bold">Cukup</p>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
