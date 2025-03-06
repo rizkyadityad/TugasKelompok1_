@@ -1,10 +1,10 @@
   Kelompok 1 || Wedang Ronde 
 
 ## 📂 Daftar Isi Folder
-- **Dokumen Login** 📄
-  - 📘 
-  - 📙 
-  - 📗 
+- **Dokumen** 📄
+  - 📘 Fitur Login 
+  - 📙 Fitur Menu 
+  - 📗 Fitur Home
   - 📕 
 - **Folder Basic** 📁
   - 🔧 Codingan composer
@@ -35,11 +35,16 @@ For detailed documentation, refer to the files linked below (written in Indonesi
 ---
 
 ## 📝 Deskripsi
-This repository is the collaborative work of **Kelompok 1** for the **UAS Project**. It includes:
-- 📌 Initial project documentation.
-- 📌 Database features.
-- 📌 Group project report.
-- 📌 System usage manual.
+Proyek ini mengembangkan web warung wedang ronde dengan fitur 
+- 📌 Login
+-    Mengganti Warna Yang lebih Cerah, Sama Text boxnya Kelebiha
+- 📌 Menu
+-    Katalog Ganti Menjadi Fitur Menu Dan menambah kan Produk Wedang Ronde Wedang Cemoe Dan Anglse
+- 📌 Home (dashboard)
+- Merubah Warna, riwayat Transaksi,Pembayaran
+Penambahan Fitur Pemesanan, Riwayat Transaksi, Pembayaran
+  
+  
 
 We hope this repository provides a clear understanding of our project. 😊
 
