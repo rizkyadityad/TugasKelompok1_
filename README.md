@@ -1,11 +1,11 @@
-# 🌟 UAS Kelompok 1 🌟
+  Kelompok 1 || Wedang Ronde 
 
 ## 📂 Daftar Isi Folder
-- **Dokumen UAS** 📄
-  - 📘 Dokumentasi Awal Proyek Pengembangan Basis Data Wedang Ronde.pdf
-  - 📙 Fitur Database[1].pdf
-  - 📗 LAPORAN TUGAS UAS kelompok 1.pdf
-  - 📕 MANUAL PENGGUNAAN SISTEM MANAJEMEN.pdf
+- **Dokumen Login** 📄
+  - 📘 Katalog
+  - 📙 
+  - 📗 
+  - 📕 
 - **Folder Basic** 📁
   - 🔧 Codingan composer
 
@@ -19,10 +19,10 @@
 ## Documentation
 For detailed documentation, refer to the files linked below (written in Indonesian):
 
-- 📘 [Dokumen Awal Proyek](#)
-- 📙 [Fitur Basis Data](#)
-- 📗 [Laporan Tugas UAS](#)
-- 📕 [Manual Penggunaan Sistem](#)
+- 📘 
+- 📙 
+- 📗
+- 📕 
 
 ---
 
