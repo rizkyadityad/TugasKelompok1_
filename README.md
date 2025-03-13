@@ -13,14 +13,6 @@
 
 ---
 
-## Documentation
-For detailed documentation, refer to the files linked below (written in Indonesian):
-
-- 📘 
-- 📙 
-- 📗
-- 📕 
-
 ---
 
 ## 🤝 Contributors
