@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Struk Pembayaran - Warung Wedang Ronde</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+        body {
+            background-color: #f5f5f5;
+            color: #333;
+        }
+        header {
+            background-color: #8B4513;
+            color: white;
+            padding: 15px 0;
+            text-align: center;
+        }
+        .container {
+            max-width: 700px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        .receipt-header {
+            text-align: center;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 1px dashed #ddd;
+        }
+        h1, h2, h3 {
+            color: #8B4513;
+            margin-bottom: 10px;
+        }
+        .receipt-body {
+            margin-bottom: 20px;
+        }
+        .receipt-info {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+        .receipt-info div {
+            flex: 1;
+        }
+        .receipt-info p {
+            margin-bottom: 5px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+        th, td {
+            padding: 12px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        .total-row {
+            font-weight: bold;
+            background-color: #f9f9f9;
+        }
+        .receipt-footer {
+            text-align: center;
+            margin-top: 30px;
+            padding-top: 15px;
+            border-top: 1px dashed #ddd;
+        }
+        .success-message {
+            background-color: #d4edda;
+            color: #155724;
+            padding: 15px;
+            border-radius: 4px;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .action-buttons {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+        }
+        .button {
+            flex: 1;
+            background-color: #8B4513;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+        }
+        .button:hover {
+            background-color: #6d3609;
+        }
+        .button.secondary {
+            background-color: #6c757d;
+        }
+        .button.secondary:hover {
+            background-color: #5a6268;
+        }
+        .qr-code {
+            text-align: center;
+            margin: 20px 0;
+        }
+        .qr-code img {
+            max-width: 150px;
+            border: 1px solid #ddd;
+            padding: 5px;
+        }
+        @media print {
+            .action-buttons {
+                display: none;
+            }
+            body {
+                background-color: white;
+            }
+            .container {
+                box-shadow: none;
+                margin: 0;
+                max-width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Warung Wedang Ronde</h1>
+    </header>
+    
+    <div class="container">
+        <div class="success-message">
+            <h3>Pembayaran Berhasil!</h3>
+            <p>Terima kasih telah memesan di Warung Wedang Ronde.</p>
+        </div>
+        
+        <div class="receipt-header">
+            <h2>Struk Pembayaran</h2>
+            <p id="receipt-number">No. Transaksi: WR-<span id="transaction-id"></span></p>
+            <p id="receipt-date">Tanggal: <span id="transaction-date"></span></p>
+        </div>
+        
+        <div class="receipt-body">
+            <div class="receipt-info">
+                <div>
+                    <h3>Informasi Pelanggan</h3>
+                    <p>Nama: <span id="customer-name"></span></p>
+                    <p>No. Telepon: <span id="customer-phone"></span></p>
+                </div>
+                <div>
+                    <h3>Informasi Pembayaran</h3>
+                    <p>Metode: <span id="payment-method"></span></p>
+                    <p id="bank-info">Bank: <span id="bank-name"></span></p>
+                    <p>Status: <span style="color: green; font-weight: bold;">LUNAS</span></p>
+                </div>
+            </div>
+            
+            <h3>Detail Pesanan</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Menu</th>
+                        <th>Jumlah</th>
+                        <th>Harga</th>
+                        <th>Subtotal</th>
+                    </tr>
+                </thead>
+                <tbody id="order-items">
+                    <!-- Data pesanan akan diisi oleh JavaScript -->
+                </tbody>
+                <tfoot>
+                    <tr class="total-row">
+                        <td colspan="3">Total</td>
+                        <td id="total-price">Rp 0</td>
+                    </tr>
+                </tfoot>
+            </table>
+            
+            <p id="notes-section">Catatan: <span id="additional-notes">-</span></p>
+        </div>
+
+        <div id="qris-section" class="qr-code" style="display: none;">
+            <h3>Scan QRIS</h3>
+            <img src="/api/placeholder/150/150" alt="QR Code QRIS">
+            <p>Silakan scan QR code di atas untuk menyelesaikan pembayaran</p>
+        </div>
+        
+        <div class="receipt-footer">
+            <p>Waktu Pemesanan: <span id="order-time"></span></p>
+            <p>Alamat: Jl. Ronde Manis No. 42, Yogyakarta</p>
+            <p>Telp: 0274-123456</p>
+            <p><strong>Terima kasih atas kunjungan Anda!</strong></p>
+        </div>
+        
+        <div class="action-buttons">
+            <a href="#" class="button" onclick="window.print()">Cetak Struk</a>
+            <a href="index.html" class="button secondary">Kembali ke Menu</a>
+        </div>
+    </div>
+
+    <script>
+        // Generate random transaction ID
+        function generateTransactionId() {
+            const timestamp = new Date().getTime().toString().slice(-6);
+            const random = Math.floor(Math.random() * 1000).toString().padStart(3, '0');
+            return timestamp + random;
+        }
+        
+        // Format date and time
+        function formatDateTime(date) {
+            const options = { 
+                year: 'numeric', 
+                month: 'long', 
+                day: 'numeric', 
+                hour: '2-digit', 
+                minute: '2-digit' 
+            };
+            return date.toLocaleDateString('id-ID', options);
+        }
+        
+        // Get URL parameters
+        function getUrlParam(param) {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get(param);
+        }
+        
+        // Load order data from localStorage
+        function loadOrderData() {
+            let orderItems = [];
+            
+            // Try to get data from localStorage
+            const savedOrder = localStorage.getItem('wedangRondeOrder');
+            if (savedOrder) {
+                orderItems = JSON.parse(savedOrder);
+            } else {
+                // Fallback to example data if no localStorage data
+                orderItems = [
+                    { menu: "Wedang Ronde Original", qty: 2, price: 10000 },
+                    { menu: "Wedang Ronde Jahe", qty: 1, price: 12000 },
+                    { menu: "Kacang Rebus", qty: 1, price: 5000 }
+                ];
+            }
+            
+            return orderItems;
+        }
+        
+        // Display order items in the receipt
+        function displayOrderItems(orderItems) {
+            const orderItemsContainer = document.getElementById('order-items');
+            let totalPrice = 0;
+            
+            orderItems.forEach(item => {
+                const subtotal = item.qty * item.price;
+                totalPrice += subtotal;
+                
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${item.menu}</td>
+                    <td>${item.qty}</td>
+                    <td>Rp ${item.price.toLocaleString('id-ID')}</td>
+                    <td>Rp ${subtotal.toLocaleString('id-ID')}</td>
+                `;
+                orderItemsContainer.appendChild(row);
+            });
+            
+            document.getElementById('total-price').textContent = `Rp ${totalPrice.toLocaleString('id-ID')}`;
+        }
+        
+        // Format payment method for display
+        function formatPaymentMethod(method, bankName = '') {
+            switch(method) {
+                case 'cash':
+                    return 'Tunai';
+                case 'qris':
+                    return 'QRIS';
+                case 'transfer':
+                    return `Transfer Bank ${bankName.toUpperCase()}`;
+                default:
+                    return method;
+            }
+        }
+        
+        // Get bank full name
+        function getBankFullName(bankCode) {
+            const banks = {
+                'bca': 'Bank Central Asia',
+                'bni': 'Bank Negara Indonesia',
+                'mandiri': 'Bank Mandiri',
+                'bri': 'Bank Rakyat Indonesia'
+            };
+            return banks[bankCode] || bankCode.toUpperCase();
+        }
+        
+        // Initialize the receipt page
+        window.onload = function() {
+            // Get data from URL parameters or localStorage
+            const customerName = getUrlParam('name') || localStorage.getItem('customerName') || 'Pelanggan';
+            const customerPhone = getUrlParam('phone') || localStorage.getItem('customerPhone') || '08123456789';
+            const paymentMethod = getUrlParam('method') || localStorage.getItem('paymentMethod') || 'cash';
+            const bankCode = getUrlParam('bank') || localStorage.getItem('bankName') || '';
+            const notes = getUrlParam('notes') || localStorage.getItem('orderNotes') || '-';
+            
+            // Generate transaction ID and date
+            const transactionId = generateTransactionId();
+            const transactionDate = new Date();
+            
+            // Set receipt information
+            document.getElementById('transaction-id').textContent = transactionId;
+            document.getElementById('transaction-date').textContent = formatDateTime(transactionDate);
+            document.getElementById('order-time').textContent = formatDateTime(transactionDate);
+            document.getElementById('customer-name').textContent = customerName;
+            document.getElementById('customer-phone').textContent = customerPhone;
+            
+            // Set payment method information
+            const bankName = bankCode ? getBankFullName(bankCode) : '';
+            document.getElementById('payment-method').textContent = formatPaymentMethod(paymentMethod, bankName);
+            
+            // Show or hide bank info
+            if (paymentMethod === 'transfer' && bankCode) {
+                document.getElementById('bank-name').textContent = bankName;
+                document.getElementById('bank-info').style.display = 'block';
+            } else {
+                document.getElementById('bank-info').style.display = 'none';
+            }
+            
+            // Show QR code for QRIS payments
+            if (paymentMethod === 'qris') {
+                document.getElementById('qris-section').style.display = 'block';
+            }
+            
+            // Set additional notes if any
+            document.getElementById('additional-notes').textContent = notes !== '-' ? notes : '-';
+            
+            // Load and display order items
+            const orderItems = loadOrderData();
+            displayOrderItems(orderItems);
+            
+            // Clear localStorage after displaying receipt (optional)
+            // localStorage.removeItem('wedangRondeOrder');
+        };
+    </script>
+</body>
+</html>

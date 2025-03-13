@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pembayaran - Warung Wedang Ronde</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+        body {
+            background-color: #f5f5f5;
+            color: #333;
+        }
+        header {
+            background-color: #8B4513;
+            color: white;
+            padding: 15px 0;
+            text-align: center;
+        }
+        .container {
+            max-width: 900px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        h1, h2 {
+            color: #8B4513;
+            margin-bottom: 20px;
+        }
+        .flex-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        .order-summary {
+            flex: 1;
+            min-width: 300px;
+        }
+        .payment-form {
+            flex: 1;
+            min-width: 300px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+        th, td {
+            padding: 12px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        .total-row {
+            font-weight: bold;
+            background-color: #f9f9f9;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        input, select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        button {
+            background-color: #8B4513;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            width: 100%;
+        }
+        button:hover {
+            background-color: #6d3609;
+        }
+        .payment-methods {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+        .payment-method {
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            padding: 10px;
+            flex: 1;
+            min-width: 100px;
+            text-align: center;
+            cursor: pointer;
+        }
+        .payment-method.selected {
+            border-color: #8B4513;
+            background-color: #f9f1eb;
+        }
+        .back-link {
+            display: inline-block;
+            margin-top: 20px;
+            color: #8B4513;
+            text-decoration: none;
+        }
+        .back-link:hover {
+            text-decoration: underline;
+        }
+        @media (max-width: 768px) {
+            .flex-container {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Warung Wedang Ronde</h1>
+    </header>
+    
+    <div class="container">
+        <h2>Pembayaran</h2>
+        
+        <div class="flex-container">
+            <div class="order-summary">
+                <h3>Ringkasan Pesanan</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Menu</th>
+                            <th>Jumlah</th>
+                            <th>Harga</th>
+                            <th>Subtotal</th>
+                        </tr>
+                    </thead>
+                    <tbody id="order-items">
+                        <!-- Data pesanan akan diisi oleh JavaScript -->
+                    </tbody>
+                    <tfoot>
+                        <tr class="total-row">
+                            <td colspan="3">Total</td>
+                            <td id="total-price">Rp 0</td>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+            
+            <div class="payment-form">
+                <h3>Detail Pembayaran</h3>
+                <form id="payment-form">
+                    <div class="form-group">
+                        <label for="customer-name">Nama Lengkap</label>
+                        <input type="text" id="customer-name" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="customer-phone">Nomor Telepon</label>
+                        <input type="tel" id="customer-phone" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Metode Pembayaran</label>
+                        <div class="payment-methods">
+                            <div class="payment-method" data-method="cash" onclick="selectPaymentMethod(this)">
+                                Tunai
+                            </div>
+                            <div class="payment-method" data-method="qris" onclick="selectPaymentMethod(this)">
+                                QRIS
+                            </div>
+                            <div class="payment-method" data-method="transfer" onclick="selectPaymentMethod(this)">
+                                Transfer Bank
+                            </div>
+                        </div>
+                        <input type="hidden" id="payment-method" value="" required>
+                    </div>
+                    
+                    <div id="bank-details" style="display: none;" class="form-group">
+                        <label for="bank-select">Pilih Bank</label>
+                        <select id="bank-select">
+                            <option value="bca">BCA</option>
+                            <option value="bni">BNI</option>
+                            <option value="mandiri">Mandiri</option>
+                            <option value="bri">BRI</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="notes">Catatan Tambahan (Opsional)</label>
+                        <input type="text" id="notes">
+                    </div>
+                    
+                    <button type="submit">Proses Pembayaran</button>
+                </form>
+            </div>
+        </div>
+        
+        <a href="index.html" class="back-link">← Kembali ke Menu</a>
+    </div>
+
+    <script>
+        // Data contoh pesanan (dalam aplikasi nyata, data ini akan diambil dari local storage atau database)
+        const orderItems = [
+            { menu: "Wedang Ronde Original", qty: 2, price: 10000 },
+            { menu: "Wedang Ronde Jahe", qty: 1, price: 12000 },
+            { menu: "Kacang Rebus", qty: 1, price: 5000 }
+        ];
+        
+        // Menampilkan data pesanan
+        function displayOrderItems() {
+            const orderItemsContainer = document.getElementById('order-items');
+            let totalPrice = 0;
+            
+            orderItems.forEach(item => {
+                const subtotal = item.qty * item.price;
+                totalPrice += subtotal;
+                
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${item.menu}</td>
+                    <td>${item.qty}</td>
+                    <td>Rp ${item.price.toLocaleString('id-ID')}</td>
+                    <td>Rp ${subtotal.toLocaleString('id-ID')}</td>
+                `;
+                orderItemsContainer.appendChild(row);
+            });
+            
+            document.getElementById('total-price').textContent = `Rp ${totalPrice.toLocaleString('id-ID')}`;
+        }
+        
+        // Memilih metode pembayaran
+        function selectPaymentMethod(element) {
+            // Reset semua tombol metode pembayaran
+            document.querySelectorAll('.payment-method').forEach(item => {
+                item.classList.remove('selected');
+            });
+            
+            // Tandai yang dipilih
+            element.classList.add('selected');
+            
+            // Simpan nilai metode pembayaran yang dipilih
+            const method = element.getAttribute('data-method');
+            document.getElementById('payment-method').value = method;
+            
+            // Tampilkan opsi bank jika metode transfer dipilih
+            if (method === 'transfer') {
+                document.getElementById('bank-details').style.display = 'block';
+            } else {
+                document.getElementById('bank-details').style.display = 'none';
+            }
+        }
+        
+        // Handle submit form
+        document.getElementById('payment-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const customerName = document.getElementById('customer-name').value;
+            const customerPhone = document.getElementById('customer-phone').value;
+            const paymentMethod = document.getElementById('payment-method').value;
+            
+            if (!paymentMethod) {
+                alert('Silakan pilih metode pembayaran');
+                return;
+            }
+            
+            // Dalam aplikasi nyata, kirim data ke server untuk diproses
+            console.log('Nama: ' + customerName);
+            console.log('Telepon: ' + customerPhone);
+            console.log('Metode Pembayaran: ' + paymentMethod);
+            
+            if (paymentMethod === 'transfer') {
+                const selectedBank = document.getElementById('bank-select').value;
+                console.log('Bank: ' + selectedBank);
+            }
+            
+            // Tampilkan pesan sukses dan redirect
+            alert('Pembayaran berhasil diproses! Terima kasih telah memesan di Warung Wedang Ronde.');
+            // window.location.href = 'receipt.html'; // Redirect ke halaman struk/bukti pembayaran
+        });
+        
+        // Jalankan fungsi saat halaman dimuat
+        window.onload = function() {
+            displayOrderItems();
+        };
+    </script>
+</body>
+</html>
