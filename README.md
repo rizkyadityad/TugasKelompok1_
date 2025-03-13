@@ -5,9 +5,6 @@
   - 📘 Fitur Login 
   - 📙 Fitur Menu 
   - 📗 Fitur Home
-  - 📕 
-- **Folder Basic** 📁
-  - 🔧 Codingan composer
 
 ---
 
@@ -45,7 +42,6 @@ Proyek ini mengembangkan web warung wedang ronde dengan fitur
 Penambahan Fitur Pemesanan, Riwayat Transaksi, Pembayaran
   
   
-
 We hope this repository provides a clear understanding of our project. 😊
 
 ---
