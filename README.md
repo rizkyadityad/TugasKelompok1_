@@ -43,5 +43,3 @@ We hope this repository provides a clear understanding of our project. 😊
    ```bash
    git clone https://github.com/rizkyadityad/TugasKelompok1_.git
    ```
-2. Open the document files in the "Dokumen UAS" folder.
-3. Follow the system usage manual for further information.
