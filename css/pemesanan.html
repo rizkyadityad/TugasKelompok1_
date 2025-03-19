@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pemesanan Wedang Ronde</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f5f5;
+        }
+        
+        header {
+            background-color: rgba(181, 69, 7, 0.9);
+            color: white;
+            padding: 1rem;
+            text-align: center;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        
+        .menu-section {
+            background-color: white;
+            border-radius: 10px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        
+        .menu-title {
+            text-align: center;
+            margin-bottom: 2rem;
+            color:rgba(181, 69, 7, 0.9);
+        }
+        
+        .menu-items {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+        
+        .menu-item {
+            border: 1px solid #eee;
+            border-radius: 8px;
+            padding: 1rem;
+            text-align: center;
+            transition: transform 0.3s;
+        }
+        
+        .menu-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .menu-item img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+        }
+        
+        .menu-item h3 {
+            margin-bottom: 0.5rem;
+            color: #333;
+        }
+        
+        .menu-item p {
+            color: #666;
+            margin-bottom: 1rem;
+        }
+        
+        .price {
+            font-weight: bold;
+            color:rgba(181, 69, 7, 0.9);
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+        }
+        
+        .quantity {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+        
+        .quantity button {
+            width: 30px;
+            height: 30px;
+            background-color: rgba(181, 69, 7, 0.9);
+            border: none;
+            color: white;
+            font-size: 1.2rem;
+            cursor: pointer;
+        }
+        
+        .quantity input {
+            width: 50px;
+            height: 30px;
+            text-align: center;
+            margin: 0 5px;
+            border: 1px solid #ccc;
+        }
+        
+        .add-to-cart {
+            background-color: rgba(181, 69, 7, 0.9);
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        .add-to-cart:hover {
+            background-color:rgba(181, 69, 7, 0.9);
+        }
+        
+        .cart-section {
+            background-color: white;
+            border-radius: 10px;
+            padding: 2rem;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        
+        .cart-title {
+            text-align: center;
+            margin-bottom: 2rem;
+            color: rgba(181, 69, 7, 0.9);
+        }
+        
+        .cart-items {
+            margin-bottom: 2rem;
+        }
+        
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .cart-item-info {
+            display: flex;
+            align-items: center;
+        }
+        
+        .cart-item-info img {
+            width: 60px;
+            height: 60px;
+            object-fit: cover;
+            border-radius: 5px;
+            margin-right: 1rem;
+        }
+        
+        .remove-item {
+            color:rgba(181, 69, 7, 0.9);
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .cart-total {
+            text-align: right;
+            margin-bottom: 2rem;
+        }
+        
+        .checkout-form {
+            margin-top: 2rem;
+        }
+        
+        .form-group {
+            margin-bottom: 1rem;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #333;
+        }
+        
+        .form-group input, .form-group textarea, .form-group select {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        
+        .checkout-button {
+            background-color:rgba(181, 69, 7, 0.9);
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            font-size: 1.1rem;
+            display: block;
+            width: 100%;
+            margin-top: 2rem;
+        }
+        
+        .checkout-button:hover {
+            background-color: rgba(181, 69, 7, 0.9);
+        }
+        
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 1rem;
+            margin-top: 2rem;
+        }
+        
+        @media (max-width: 768px) {
+            .menu-items {
+                grid-template-columns: 1fr;
+            }
+            
+            .cart-item {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .cart-item-info {
+                margin-bottom: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Warung Wedang Ronde</h1>
+        <p>Nikmatnya Wedang Ronde Tradisional</p>
+    </header>
+    
+    <div class="container">
+        <section class="menu-section">
+            <h2 class="menu-title">Menu Wedang Ronde</h2>
+            <div class="menu-items">
+                <div class="menu-item">
+                    <img src="./css/cara-membuat-wedang-ronde.jpg" alt="Wedang Ronde Original">
+                    <h3>Wedang Ronde Original</h3>
+                    <p>Wedang ronde dengan kuah jahe dan kacang</p>
+                    <div class="price">Rp 8.000</div>
+                    <div class="quantity">
+                        <button onclick="decreaseQuantity('original')">-</button>
+                        <input type="number" id="original" value="0" min="0">
+                        <button onclick="increaseQuantity('original')">+</button>
+                    </div>
+                    <button class="add-to-cart" onclick="addToCart('Wedang Ronde Original', 10000, 'original')">Tambah ke Keranjang</button>
+                </div>
+                
+                <div class="menu-item">
+                    <img src="./css/wedang-angsle-foto-resep-utama.jpg" alt="Wedang Ronde Spesial">
+                    <h3>Wedang Cemue</h3>
+                    <p>Wedang ronde dengan tambahan biji mutiara dan kolang-kaling</p>
+                    <div class="price">Rp 8.000</div>
+                    <div class="quantity">
+                        <button onclick="decreaseQuantity('spesial')">-</button>
+                        <input type="number" id="spesial" value="0" min="0">
+                        <button onclick="increaseQuantity('spesial')">+</button>
+                    </div>
+                    <button class="add-to-cart" onclick="addToCart('Wedang Ronde Spesial', 15000, 'spesial')">Tambah ke Keranjang</button>
+                </div>
+                
+                
+    
+            </div>
+        </section>
+        
+        <section class="cart-section">
+            <h2 class="cart-title">Keranjang Belanja</h2>
+            <div class="cart-items" id="cart-items">
+                <!-- Cart items will be added here -->
+                <div class="empty-cart">Keranjang belanja Anda kosong</div>
+            </div>
+            
+            <div class="cart-total">
+                <h3>Total: <span id="total-price">Rp 0</span></h3>
+            </div>
+            
+            <div class="checkout-form">
+                <h3>Informasi Pemesanan</h3>
+                <div class="form-group">
+                    <label for="name">Nama Lengkap</label>
+                    <input type="text" id="name" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="phone">Nomor Telepon</label>
+                    <input type="tel" id="phone" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="address">Alamat</label>
+                    <textarea id="address" rows="3" required></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label for="delivery-time">Waktu Pengantaran</label>
+                    <input type="datetime-local" id="delivery-time" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="payment-method">Metode Pembayaran</label>
+                    <select id="payment-method" required>
+                        <option value="">Pilih metode pembayaran</option>
+                        <option value="cash">Tunai</option>
+                        <option value="transfer">Transfer Bank</option>
+                        <option value="e-wallet">E-Wallet</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="notes">Catatan Tambahan</label>
+                    <textarea id="notes" rows="2"></textarea>
+                </div>
+                
+                <button class="checkout-button" onclick="checkout()">Proses Pemesanan</button>
+            </div>
+        </section>
+    </div>
+    
+    <footer>
+        <p>&copy; 2025 Warung Wedang Ronde. Semua Hak Dilindungi.</p>
+    </footer>
+    
+    <script>
+        let cart = [];
+let totalPrice = 0;
+
+function increaseQuantity(id) {
+    const input = document.getElementById(id);
+    input.value = parseInt(input.value) + 1;
+}
+
+function decreaseQuantity(id) {
+    const input = document.getElementById(id);
+    if (parseInt(input.value) > 0) {
+        input.value = parseInt(input.value) - 1;
+    }
+}
+
+function addToCart(name, price, id) {
+    const quantity = parseInt(document.getElementById(id).value);
+    
+    if (quantity > 0) {
+        const existingItem = cart.find(item => item.name === name);
+        
+        if (existingItem) {
+            existingItem.quantity += quantity;
+        } else {
+            cart.push({
+                name: name,
+                price: price,
+                quantity: quantity,
+                id: Date.now()
+            });
+        }
+        
+        document.getElementById(id).value = 0;
+        updateCartUI();
+        alert(`${quantity} ${name} ditambahkan ke keranjang!`);
+    } else {
+        alert('Silakan pilih jumlah item yang ingin dipesan!');
+    }
+}
+
+function removeFromCart(id) {
+    cart = cart.filter(item => item.id !== id);
+    updateCartUI();
+}
+
+function updateCartUI() {
+    const cartItemsDiv = document.getElementById('cart-items');
+    cartItemsDiv.innerHTML = '';
+    totalPrice = 0;
+    
+    if (cart.length === 0) {
+        cartItemsDiv.innerHTML = '<div class="empty-cart">Keranjang belanja Anda kosong</div>';
+        document.getElementById('total-price').textContent = 'Rp 0';
+        return;
+    }
+    
+    cart.forEach(item => {
+        const itemTotal = item.price * item.quantity;
+        totalPrice += itemTotal;
+        
+        const cartItemDiv = document.createElement('div');
+        cartItemDiv.classList.add('cart-item');
+        cartItemDiv.innerHTML = `
+            <div class="cart-item-info">
+                <span>${item.name} (x${item.quantity})</span>
+            </div>
+            <span>Rp ${itemTotal.toLocaleString()}</span>
+            <button class="remove-item" onclick="removeFromCart(${item.id})">Hapus</button>
+        `;
+        
+        cartItemsDiv.appendChild(cartItemDiv);
+    });
+    
+    document.getElementById('total-price').textContent = `Rp ${totalPrice.toLocaleString()}`;
+}

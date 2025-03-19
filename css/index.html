@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Warung Wedang Ronde - Menu Utama</title>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap");
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        height: 100%;
+        overflow: hidden;
+        font-family: "Poppins", sans-serif;
+        background-color: #f8f5f2;
+        color: #333;
+        line-height: 1.6;
+        padding-bottom: 60px;
+      }
+
+      header {
+        background-color: rgba(181, 69, 7, 0.9);
+        color: white;
+        padding: 1rem 0;
+        position: fixed;
+        width: 100%;
+        top: 0;
+        z-index: 1000;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+      }
+
+      .container {
+        width: 90%;
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      .navbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .logo {
+        font-size: 1.8rem;
+        font-weight: 700;
+        color: white;
+        text-decoration: none;
+      }
+
+      .logo span {
+        color: #ffcc80;
+      }
+
+      .nav-links {
+        display: flex;
+        list-style: none;
+      }
+
+      .nav-links li {
+        margin-left: 2rem;
+      }
+
+      .nav-links a {
+        color: white;
+        text-decoration: none;
+        font-weight: 500;
+        transition: color 0.3s;
+      }
+
+      .nav-links a:hover {
+        color: #ffcc80;
+      }
+
+      /* Hero Section */
+      .hero {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 5rem 2rem;
+        height: 100vh;
+      }
+
+      .hero-content {
+        max-width: 50%;
+      }
+
+      .hero h1 {
+        font-size: 3rem;
+        margin-bottom: 1rem;
+      }
+
+      .hero p {
+        font-size: 1.2rem;
+        margin-bottom: 2rem;
+      }
+
+      .btn {
+        display: inline-block;
+        background-color: #ffcc80;
+        color: #b54507;
+        padding: 0.8rem 1.5rem;
+        border-radius: 50px;
+        text-decoration: none;
+        font-weight: 600;
+        transition: all 0.3s;
+      }
+
+      .btn:hover {
+        background-color: #b54507;
+        color: white;
+      }
+
+      .hero-images {
+        position: relative;
+        width: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 20px;
+      }
+
+      .hero-images img {
+        width: 280px;
+        border-radius: 15px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        position: relative;
+      }
+
+      .hero-images img:nth-child(1) {
+        top: -6px;
+        left: 100px;
+        width: 270px;
+      }
+
+      .hero-images img:nth-child(2) {
+        top: 50px;
+        left: 100px;
+        width: 260px;
+      }
+
+      .hero-images img:nth-child(3) {
+        top: 90px;
+        left: 100px;
+        width: 250px;
+      }
+
+      /* Footer */
+      footer {
+        background-color: rgba(181, 69, 7, 0.9);
+        color: white;
+        padding: 1rem 0;
+        text-align: center;
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+      }
+
+      footer p {
+        margin: 0.5rem 0;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Header -->
+    <header>
+      <div class="container">
+        <nav class="navbar">
+          <a href="#" class="logo">Wedang<span>Ronde</span></a>
+          <ul class="nav-links">
+            <li><a href="#home">Beranda</a></li>
+            <li><a href="./about.html">Tentang Kami</a></li>
+            <li><a href="#menu">Menu</a></li>
+            <li><a href="#pemesanan">Pemesanan</a></li>
+            <li><a href="#pembayaran">Pembayaran</a></li>
+            <li><a href="#transaksi">Transaksi</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero container">
+      <div class="hero-content">
+        <h1>Wedang Ronde Hangat & Menyegarkan</h1>
+        <p>
+          Temukan sensasi rasa tradisional yang autentik dalam setiap tegukan.
+        </p>
+        <a href="#menu" class="btn">Lihat Menu</a>
+      </div>
+      <div class="hero-images">
+        <img src="./image/ronde 2.jpg" alt="Ronde 2" />
+        <img src="./image/wedang.jpg" alt="Wedang" />
+        <img src="./image/ronde.jpg" alt="Ronde" />
+      </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer>
+      <div class="container">
+        <p>&copy; 2025 Warung Wedang Ronde. Kelompok1.</p>
+      </div>
+    </footer>
+  </body>
+</html>
