@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Katalog Warung Wedang Ronde</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        body {
+            background-color: #f8f5f2;
+            padding-top: 70px;
+        }
+        
+        /* Navbar */
+        header {
+            background-color: #8B4513;
+            color: white;
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: white;
+            text-decoration: none;
+        }
+        
+        .logo span {
+            color: #ffcc80;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 2rem;
+        }
+        
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: #ffcc80;
+        }
+        
+        .catalog {
+            max-width: 1200px;
+            margin: 30px auto;
+            padding: 25px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .catalog-title {
+            color: rgba(181, 69, 7, 0.9);
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 2rem;
+            font-weight: bold;
+        }
+        
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 25px;
+        }
+        
+        .product-card {
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            padding: 20px;
+            text-align: center;
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            align-items: center; /* Memastikan semua elemen sejajar tengah */
+        }
+        
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .product-image {
+            width: 100%;
+            max-width: 200px; /* Ukuran maksimum gambar */
+            height: 180px;
+            object-fit: contain; /* Gambar tetap proporsional tanpa dipotong */
+            border-radius: 6px;
+            display: block;
+            margin: 0 auto; /* Menjadikan gambar berada di tengah */
+        }
+        
+        .product-title {
+            font-size: 1.3rem;
+            color: #333;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+        
+        .product-description {
+            color: #666;
+            margin-bottom: 15px;
+            font-size: 0.95rem;
+            line-height: 1.4;
+        }
+        
+        .product-price {
+            color: rgba(181, 69, 7, 0.9);
+            font-size: 1.4rem;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+        
+        .quantity-control {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        
+        .quantity-btn {
+            background-color: rgba(181, 69, 7, 0.9);
+            color: white;
+            border: none;
+            width: 32px;
+            height: 32px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+        
+        .quantity-btn:hover {
+            background-color: rgba(181, 69, 7, 0.9);
+        }
+        
+        .quantity-input {
+            width: 50px;
+            height: 32px;
+            text-align: center;
+            margin: 0 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+        
+        .add-to-cart {
+            background-color:rgba(181, 69, 7, 0.9);
+            color: white;
+            border: none;
+            padding: 10px 0;
+            width: 100%;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 1rem;
+            transition: background-color 0.3s;
+        }
+        
+        .add-to-cart:hover {
+            background-color: rgba(181, 69, 7, 0.9);
+        }
+        
+        @media (max-width: 768px) {
+            .product-grid {
+                grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+                gap: 15px;
+            }
+            
+            .catalog {
+                padding: 15px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .product-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav class="navbar">
+                <a href="#" class="logo">Wedang<span>Ronde</span></a>
+                <ul class="nav-links">
+                    <li><a href="./index.html">Beranda</a></li>
+                    <li><a href="./about.html">Tentang Kami</a></li>
+                    <li><a href="./katalog.html">Katalog</a></li>
+                    <li><a href="./pemesanan.html">Pemesanan</a></li>
+                    <li><a href="./pembayaran.html">Pembayaran</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    
+    <div class="catalog">
+        <h2 class="catalog-title">Menu Wedang Ronde</h2>
+        
+        <div class="product-grid">
+            <!-- Product 1 -->
+            <div class="product-card">
+                <img src="css/unnamed.jpg" alt="Wedang Ronde"class="product-image">
+                <h3 class="product-title">Wedang Ronde Original</h3>
+                <p class="product-description">Wedang ronde dengan kuah jahe dan kacang</p>
+                <div class="product-price">Rp 10.000</div>
+                <div class="quantity-control">
+                    <button class="quantity-btn" onclick="decreaseQuantity('qty1')">-</button>
+                    <input type="text" class="quantity-input" id="qty1" value="0">
+                    <button class="quantity-btn" onclick="increaseQuantity('qty1')">+</button>
+                </div>
+                <button class="add-to-cart" onclick="addToCart('Wedang Ronde', 10000, 'qty1')">Tambah ke Keranjang</button>
+            </div>
+            
+            <!-- Product 2 -->
+            <div class="product-card">
+                <img src="css/Resep-wedang-cemue-khas-Ngawai.jpg" alt="Wedang Cemue" class="product-image">
+                <h3 class="product-title">Wedang Cemue</h3>
+                <p class="product-description">Wedang dengan roti tawar dan kuah santan</p>
+                <div class="product-price">Rp 15.000</div>
+                <div class="quantity-control">
+                    <button class="quantity-btn" onclick="decreaseQuantity('qty2')">-</button>
+                    <input type="text" class="quantity-input" id="qty2" value="0">
+                    <button class="quantity-btn" onclick="increaseQuantity('qty2')">+</button>
+                </div>
+                <button class="add-to-cart" onclick="addToCart('Wedang Cemue', 15000, 'qty2')">Tambah ke Keranjang</button>
+            </div>
+            
+
+    
+    <script>
+        // Cart data
+        let cart = [];
+        
+        // Function to increase quantity
+        function increaseQuantity(id) {
+            const input = document.getElementById(id);
+            let value = parseInt(input.value);
+            input.value = value + 1;
+        }
+        
+        // Function to decrease quantity
+        function decreaseQuantity(id) {
+            const input = document.getElementById(id);
+            let value = parseInt(input.value);
+            if (value > 0) {
+                input.value = value - 1;
+            }
+        }
+        
+        // Function to add item to cart
+        function addToCart(name, price, qtyId) {
+            const quantity = parseInt(document.getElementById(qtyId).value);
+            
+            if (quantity <= 0) {
+                alert('Silakan pilih jumlah produk terlebih dahulu!');
+                return;
+            }
+            
+            // Check if item already exists in cart
+            const existingItemIndex = cart.findIndex(item => item.name === name);
+            
+            if (existingItemIndex > -1) {
+                // Update quantity if item exists
+                cart[existingItemIndex].quantity += quantity;
+            } else {
+                // Add new item to cart
+                cart.push({
+                    name: name,
+                    price: price,
+                    quantity: quantity
+                });
+            }
+            
+            // Reset quantity input
+            document.getElementById(qtyId).value = 0;
+            
+            // Show success message
+            alert(`${quantity} ${name} berhasil ditambahkan ke keranjang!`);
+            
+            // You can add code here to update cart display if needed
+            console.log('Cart contents:', cart);
+        }
+    </script>
+</body>
+</html>
