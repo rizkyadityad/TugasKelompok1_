@@ -1,0 +1,946 @@
+<!DOCTYPE html>
+<html lang="en">
+<<<<<<< HEAD
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tentang Kami</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            overflow: hidden;
+            height: 100%;
+            font-family: 'Poppins', sans-serif;
+            background-color: #f4e1d2;
+            color: #333;
+            line-height: 1.6;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        header {
+            background-color: #b54507;
+            color: white;
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        }
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            flex: 1;
+        }
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: white;
+            text-decoration: none;
+        }
+        .logo span {
+            color: #ffcc80;
+        }
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        .nav-links li {
+            margin-left: 2rem;
+        }
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        .nav-links a:hover {
+            color: #ffcc80;
+        }
+        .about {
+            padding: 5rem 0;
+            background-color: white;
+            margin-top: 70px;
+            flex: 1;
+        }
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: #b54507;
+            position: relative;
+            display: inline-block;
+        }
+        .about-content {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+        .about-text {
+            flex: 1;
+            padding: 20px;
+            color: #4B0082;
+            font-size: 18px;
+            line-height: 1.6;
+        }
+        .about-image {
+            flex: 1;
+            text-align: center;
+        }
+        .about-image img {
+            width: 100%;
+            max-width: 400px;
+            border-radius: 15px;
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+        .about-image img:hover {
+            transform: scale(1.1);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+        }
+        footer {
+            background-color: #b54507;
+            color: white;
+            text-align: center;
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+            box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.2);
+        }
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            .about-content {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav class="navbar">
+                <a href="#" class="logo">Wedang<span>Ronde</span></a>
+                <ul class="nav-links">
+                    <li><a href="./index.html">Beranda</a></li>
+                    <li><a href="#about">Tentang Kami</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <section id="about" class="about">
+        <div class="container">
+            <div class="section-title">
+                <h2>Tentang Kami</h2>
+            </div>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>Warung Wedang Ronde kami telah berdiri sejak tahun 1995 dan telah melayani ribuan pelanggan dengan cita rasa wedang ronde yang autentik dan nikmat.</p>
+                    <p>Resep kami diturunkan dari generasi ke generasi, tetap menjaga keaslian dan kualitas bahan yang digunakan. Kami hanya menggunakan jahe pilihan, gula aren asli, dan kacang tanah berkualitas tinggi.</p>
+                    <p>Warung kami terkenal dengan suasana yang hangat dan nyaman, menjadikannya tempat favorit untuk berkumpul dengan keluarga dan teman di malam yang dingin.</p>
+                </div>
+                <div class="about-image">
+                    <img src="./image/wedang.jpg" alt="Wedang Ronde">
+                </div>
+            </div>
+        </div>
+    </section>
+    <footer>
+        <p>&copy; 2025 Wedang Ronde. All rights reserved.</p>
+    </footer>
+</body>
+=======
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tentang Kami</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap");
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        font-family: "Poppins", sans-serif;
+        background-color: #f4e1d2;
+        color: #333;
+        line-height: 1.6;
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+      }
+      header {
+        background-color: #b54507;
+        color: white;
+        padding: 1rem 0;
+        position: fixed;
+        width: 100%;
+        top: 0;
+        z-index: 1000;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+      }
+     .container {
+        width: 90%;
+        /* max-width: 1200px; */
+        margin: 0 auto;
+        /* padding: 0 20px; */
+      }
+
+      .navbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 20px;
+      }
+
+      .logo {
+        font-size: 1.8rem;
+        font-weight: 700;
+        color: white;
+        text-decoration: none;
+      }
+
+      .logo span {
+        color: #ffcc80;
+      }
+
+      .nav-links {
+        display: flex;
+        list-style: none;
+        gap: 15px;
+      }
+
+      .nav-links li {
+        margin-left: 20px;
+      }
+
+      .nav-links a {
+        color: white;
+        text-decoration: none;
+        font-weight: 500;
+        transition: color 0.3s;
+        padding: 8px 12px;
+      }
+
+      .nav-links a:hover {
+        color: #ffcc80;
+        background-color: rgba(255, 255, 255, 0.1);
+        border-radius: 5px;
+      }
+      .about {
+        padding: 5rem 0;
+        background-color: white;
+        margin-top: 70px;
+        margin-bottom: 60px;
+      }
+      .section-title {
+        text-align: center;
+        margin-bottom: 3rem;
+      }
+      .section-title h2 {
+        font-size: 2.5rem;
+        color: #b54507;
+        position: relative;
+        display: inline-block;
+      }
+      .about-content {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: space-between;
+        background: white;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        margin-bottom: 40px;
+      }
+      .about-text {
+        flex: 1;
+        padding: 20px;
+        color: #000000;
+        font-size: 18px;
+        line-height: 1.6;
+      }
+      .about-image {
+        flex: 1;
+        text-align: center;
+      }
+      .about-image img {
+        width: 100%;
+        max-width: 400px;
+        border-radius: 15px;
+        transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+      }
+      .about-image img:hover {
+        transform: scale(1.1);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+      }
+      footer {
+        background-color: rgba(181, 69, 7, 0.9);
+        color: white;
+        padding: 1rem 0;
+        text-align: center;
+        position: relative;
+        width: 100%;
+      }
+
+      footer p {
+        margin: 0.5rem 0;
+      }
+
+      /* Gaya untuk bagian ulasan */
+      .reviews-section {
+        margin-top: 40px;
+        background: #fff9f2;
+        padding: 30px;
+        border-radius: 10px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      }
+
+      .reviews-title {
+        text-align: center;
+        margin-bottom: 30px;
+        font-size: 2rem;
+        color: #b54507;
+      }
+
+      .reviews-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        /* gap: 20%; */
+      }
+
+      .review-card {
+        background: white;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s;
+      }
+
+      .review-card:hover {
+        transform: translateY(-5px);
+      }
+
+      .review-header {
+        display: flex;
+        align-items: center;
+        margin-bottom: 15px;
+      }
+
+      .reviewer-image {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        object-fit: cover;
+        margin-right: 15px;
+        border: 2px solid #b54507;
+      }
+
+      .reviewer-info {
+        flex: 1;
+      }
+
+      .reviewer-name {
+        font-weight: 600;
+        margin-bottom: 3px;
+        color: #333;
+      }
+
+      .review-date {
+        font-size: 0.8rem;
+        color: #777;
+      }
+
+      .rating {
+        color: #ffa41b;
+        font-size: 1.2rem;
+        margin-bottom: 10px;
+      }
+
+      .review-text {
+        color: #555;
+        line-height: 1.5;
+      }
+
+      .add-review {
+        text-align: center;
+        margin-top: 30px;
+      }
+
+      .add-review-btn {
+        background-color: #b54507;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 30px;
+        font-size: 1rem;
+        cursor: pointer;
+        transition: background-color 0.3s;
+        font-family: "Poppins", sans-serif;
+        font-weight: 500;
+      }
+
+      .add-review-btn:hover {
+        background-color: #d65f1b;
+      }
+
+      /* Form Review Style */
+      .review-form-container {
+        max-width: 800px;
+        margin: 30px auto;
+        background: white;
+        padding: 30px;
+        border-radius: 10px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        display: none;
+      }
+
+      .review-form-container.active {
+        display: block;
+        animation: fadeIn 0.5s ease;
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(-20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .form-title {
+        color: #b54507;
+        text-align: center;
+        margin-bottom: 20px;
+        font-size: 1.8rem;
+      }
+
+      .form-group {
+        margin-bottom: 20px;
+      }
+
+      .form-label {
+        display: block;
+        margin-bottom: 8px;
+        font-weight: 500;
+        color: #555;
+      }
+
+      .form-control {
+        width: 100%;
+        padding: 12px;
+        border: 1px solid #ddd;
+        border-radius: 6px;
+        font-family: "Poppins", sans-serif;
+        font-size: 16px;
+        transition: border-color 0.3s;
+      }
+
+      .form-control:focus {
+        border-color: #b54507;
+        outline: none;
+      }
+
+      .star-rating {
+        display: flex;
+        flex-direction: row-reverse;
+        justify-content: flex-end;
+      }
+
+      .star-rating input {
+        display: none;
+      }
+
+      .star-rating label {
+        cursor: pointer;
+        font-size: 30px;
+        color: #ddd;
+        transition: color 0.2s;
+        padding: 0 5px;
+      }
+
+      .star-rating label:hover,
+      .star-rating label:hover ~ label,
+      .star-rating input:checked ~ label {
+        color: #ffa41b;
+      }
+
+      .form-buttons {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 30px;
+      }
+
+      .submit-btn,
+      .cancel-btn {
+        padding: 12px 25px;
+        border: none;
+        border-radius: 30px;
+        font-family: "Poppins", sans-serif;
+        font-size: 16px;
+        cursor: pointer;
+        transition: all 0.3s;
+      }
+
+      .submit-btn {
+        background-color: #b54507;
+        color: white;
+      }
+
+      .submit-btn:hover {
+        background-color: #d65f1b;
+      }
+
+      .cancel-btn {
+        background-color: #f0f0f0;
+        color: #555;
+      }
+
+      .cancel-btn:hover {
+        background-color: #e0e0e0;
+      }
+
+      /* Profil User Style */
+      .user-profile {
+        display: flex;
+        align-items: center;
+        margin-bottom: 20px;
+      }
+
+      .profile-photo-container {
+        position: relative;
+        margin-right: 20px;
+      }
+
+      .profile-photo {
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 3px solid #b54507;
+      }
+
+      .change-photo {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        background: #b54507;
+        color: white;
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        font-size: 14px;
+        transition: background 0.3s;
+      }
+
+      .change-photo:hover {
+        background: #d65f1b;
+      }
+
+      .profile-info {
+        flex: 1;
+      }
+
+      .profile-name {
+        font-size: 1.4rem;
+        font-weight: 600;
+        color: #333;
+        margin-bottom: 5px;
+      }
+
+      .profile-photo-input {
+        display: none;
+      }
+
+      /* Overlay for mobile nav menu */
+      .overlay.active {
+        display: block;
+      }
+
+      /* Responsif */
+      @media (max-width: 768px) {
+        .nav-links {
+          flex-direction: column;
+          background-color: #b54507;
+          position: absolute;
+          top: 60px;
+          right: 10px;
+          padding: 10px;
+          border-radius: 10px;
+          box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="container">
+        <nav class="navbar">
+          <!-- Left side with hamburger and logo -->
+          <div style="display: flex; align-items: center">
+            <a href="#" class="logo">Wedang<span>Ronde</span></a>
+          </div>
+
+          <ul class="nav-links" id="navLinks">
+            <li><a href="./index.html">Beranda</a></li>
+            <li><a href="./profile.html">Profil</a></li>
+            <li><a href="./about.html">Tentang Kami</a></li>
+            <li><a href="./katalog.html">Katalog</a></li>
+            <li><a href="./pembayaran.html">Pembayaran</a></li>
+            <li><a href="./transaksi.html">Transaksi</a></li>
+            <li><a href="./rekaptransaksi.html">Riwayat Transaksi</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <!-- Overlay for mobile menu -->
+
+    <section id="about" class="about">
+      <div class="container">
+        <div class="section-title">
+          <h2>Tentang Kami</h2>
+        </div>
+        <div class="about-content">
+          <div class="about-text">
+            <p>
+              <b>Warung Wedang Ronde kami telah berdiri sejak tahun 1995 dan telah
+              melayani ribuan pelanggan dengan cita rasa wedang ronde yang
+              autentik dan nikmat.</b
+            </p>
+            <p>
+              <b>Resep kami diturunkan dari generasi ke generasi, tetap menjaga
+              keaslian dan kualitas bahan yang digunakan. Kami hanya menggunakan
+              jahe pilihan, gula aren asli, dan kacang tanah berkualitas tinggi.</b>
+            </p>
+            <p>
+              <b>Warung kami terkenal dengan suasana yang hangat dan nyaman,
+              menjadikannya tempat favorit untuk berkumpul dengan keluarga dan
+              teman di malam yang dingin.</b>
+            </p>
+          </div>
+          <div class="about-image">
+            <img src="gambar/wedang.jpg" alt="Wedang Ronde" />
+          </div>
+        </div>
+
+        <!-- Bagian Ulasan dan Rating -->
+        <div class="reviews-section">
+          <h3 class="reviews-title">Ulasan Pelanggan</h3>
+          <div class="reviews-container">
+            <!-- Ulasan 1 -->
+            <div class="review-card">
+              <div class="review-header">
+                <img src="css/unduhan (5).jpeg" class="reviewer-image" />
+                <div class="reviewer-info">
+                  <h4 class="reviewer-name">Choi Hyun Wook</h4>
+                  <p class="review-date">23 Maret 2025</p>
+                </div>
+              </div>
+              <div class="rating">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+              </div>
+              <p class="review-text">
+                Wedang ronde di sini benar-benar lezat! Jahe yang digunakan
+                sangat segar dan aromanya menggugah selera. Bola-bola kenyal
+                dengan isi kacangnya pas sekali. Saya selalu mampir ke sini saat
+                cuaca dingin.
+              </p>
+            </div>
+
+            <!-- Ulasan 2 -->
+            <div class="review-card">
+              <div class="review-header">
+                <img
+                  src="css/CHOI SAN.jpeg"
+                  alt="Profil Siti"
+                  class="reviewer-image"
+                />
+                <div class="reviewer-info">
+                  <h4 class="reviewer-name">Choi San</h4>
+                  <p class="review-date">17 Maret 2025</p>
+                </div>
+              </div>
+              <div class="rating">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="far fa-star"></i>
+              </div>
+              <p class="review-text">
+                Saya sangat menyukai wedang ronde di sini. Rasanya otentik dan
+                mengingatkan pada masa kecil. Suasana warungnya juga nyaman.
+                Saya hanya berharap porsinya bisa lebih banyak lagi!
+              </p>
+            </div>
+
+            <!-- Ulasan 3 -->
+            <div class="review-card">
+              <div class="review-header">
+                <img src="css/kim mingyu (1).jpeg" class="reviewer-image" />
+                <div class="reviewer-info">
+                  <h4 class="reviewer-name">Kim Mingyu</h4>
+                  <p class="review-date">5 Maret 2025</p>
+                </div>
+              </div>
+              <div class="rating">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star-half-alt"></i>
+              </div>
+              <p class="review-text">
+                Wedang ronde terenak yang pernah saya coba! Gula aren yang
+                digunakan sangat berkualitas, tidak terlalu manis dan berpadu
+                sempurna dengan jahe. Pelayanannya juga ramah.
+              </p>
+            </div>
+          </div>
+
+          <!-- Tombol untuk menambah ulasan -->
+          <div class="add-review">
+            <button class="add-review-btn" id="showReviewForm">
+              <i class="fas fa-plus-circle"></i> Tambahkan Ulasan Anda
+            </button>
+          </div>
+
+          <!-- Form untuk menambahkan ulasan -->
+          <div class="review-form-container" id="reviewForm">
+            <h3 class="form-title">Tambahkan Ulasan Anda</h3>
+
+            <!-- Profil User -->
+            <div class="user-profile">
+              <div class="profile-photo-container">
+                <img
+                  src="/api/placeholder/200/200"
+                  alt="Profil Anda"
+                  class="profile-photo"
+                  id="profilePhotoPreview"
+                />
+                <label for="profilePhoto" class="change-photo">
+                  <i class="fas fa-camera"></i>
+                </label>
+                <input
+                  type="file"
+                  id="profilePhoto"
+                  class="profile-photo-input"
+                  accept="image/*"
+                />
+              </div>
+              <div class="profile-info">
+                <div class="form-group">
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="profileName"
+                    placeholder="Nama Anda"
+                  />
+                </div>
+              </div>
+            </div>
+
+            <!-- Form Rating -->
+            <div class="form-group">
+              <label class="form-label">Rating</label>
+              <div class="star-rating">
+                <input type="radio" id="star5" name="rating" value="5" />
+                <label for="star5" class="fas fa-star"></label>
+                <input type="radio" id="star4" name="rating" value="4" />
+                <label for="star4" class="fas fa-star"></label>
+                <input type="radio" id="star3" name="rating" value="3" />
+                <label for="star3" class="fas fa-star"></label>
+                <input type="radio" id="star2" name="rating" value="2" />
+                <label for="star2" class="fas fa-star"></label>
+                <input type="radio" id="star1" name="rating" value="1" />
+                <label for="star1" class="fas fa-star"></label>
+              </div>
+            </div>
+
+            <!-- Form Ulasan -->
+            <div class="form-group">
+              <label for="reviewText" class="form-label">Ulasan Anda</label>
+              <textarea
+                id="reviewText"
+                class="form-control"
+                rows="5"
+                placeholder="Bagikan pengalaman Anda tentang wedang ronde kami..."
+              ></textarea>
+            </div>
+
+            <!-- Tombol Submit dan Cancel -->
+            <div class="form-buttons">
+              <button class="cancel-btn" id="cancelReview">Batal</button>
+              <button class="submit-btn" id="submitReview">Kirim Ulasan</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <footer>
+      <p>&copy; 2025 Wedang Ronde. All rights reserved.</p>
+    </footer>
+
+    <script>
+      // Script untuk menampilkan form ulasan saat tombol di klik
+      document
+        .getElementById("showReviewForm")
+        .addEventListener("click", function () {
+          document.getElementById("reviewForm").classList.add("active");
+        });
+
+      // Script untuk menyembunyikan form ulasan saat tombol batal di klik
+      document
+        .getElementById("cancelReview")
+        .addEventListener("click", function () {
+          document.getElementById("reviewForm").classList.remove("active");
+        });
+
+      // Script untuk preview foto profil
+      document
+        .getElementById("profilePhoto")
+        .addEventListener("change", function (event) {
+          const file = event.target.files[0];
+          if (file) {
+            const reader = new FileReader();
+            reader.onload = function (e) {
+              document.getElementById("profilePhotoPreview").src =
+                e.target.result;
+            };
+            reader.readAsDataURL(file);
+          }
+        });
+
+      // Script untuk menangani pengiriman ulasan (simulasi)
+      document
+        .getElementById("submitReview")
+        .addEventListener("click", function () {
+          const name = document.getElementById("profileName").value;
+          const rating = document.querySelector('input[name="rating"]:checked');
+          const reviewText = document.getElementById("reviewText").value;
+
+          if (!name) {
+            alert("Silakan masukkan nama Anda");
+            return;
+          }
+
+          if (!rating) {
+            alert("Silakan berikan rating");
+            return;
+          }
+
+          if (!reviewText) {
+            alert("Silakan tulis ulasan Anda");
+            return;
+          }
+
+          // Simulasi pengiriman ulasan
+          alert("Terima kasih telah memberikan ulasan!");
+
+          // Membuat ulasan baru (dalam kasus nyata, ini akan dikirim ke server)
+          addNewReview(name, rating.value, reviewText);
+
+          // Reset form dan sembunyikan
+          document.getElementById("profileName").value = "";
+          document.querySelector(
+            'input[name="rating"]:checked'
+          ).checked = false;
+          document.getElementById("reviewText").value = "";
+          document.getElementById("reviewForm").classList.remove("active");
+        });
+
+      // Fungsi untuk menambahkan ulasan baru ke daftar ulasan
+      function addNewReview(name, stars, text) {
+        // Membuat elemen ulasan baru
+        const reviewCard = document.createElement("div");
+        reviewCard.className = "review-card";
+
+        // Mendapatkan tanggal sekarang
+        const now = new Date();
+        const options = { day: "numeric", month: "long", year: "numeric" };
+        const dateString = now.toLocaleDateString("id-ID", options);
+
+        // Membuat HTML untuk ulasan baru
+        reviewCard.innerHTML = `
+          <div class="review-header">
+            <img src="${
+              document.getElementById("profilePhotoPreview").src
+            }" alt="Profil ${name}" class="reviewer-image" />
+            <div class="reviewer-info">
+              <h4 class="reviewer-name">${name}</h4>
+              <p class="review-date">${dateString}</p>
+            </div>
+          </div>
+          <div class="rating">
+            ${getStarIcons(stars)}
+          </div>
+          <p class="review-text">${text}</p>
+        `;
+
+        // Menambahkan ulasan baru ke awal daftar
+        const reviewsContainer = document.querySelector(".reviews-container");
+        reviewsContainer.insertBefore(reviewCard, reviewsContainer.firstChild);
+
+        // Animasi sederhana untuk ulasan baru
+        reviewCard.style.animation = "fadeIn 1s ease";
+      }
+
+      // Fungsi untuk membuat ikon bintang berdasarkan rating
+      function getStarIcons(stars) {
+        let starsHTML = "";
+        for (let i = 1; i <= 5; i++) {
+          if (i <= stars) {
+            starsHTML += '<i class="fas fa-star"></i>';
+          } else if (i - 0.5 == stars) {
+            starsHTML += '<i class="fas fa-star-half-alt"></i>';
+          } else {
+            starsHTML += '<i class="far fa-star"></i>';
+          }
+        }
+        return starsHTML;
+      }
+    </script>
+  </body>
+>>>>>>> 7b73176 (update)
+</html>

@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Warung Wedang Ronde - Login</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        body {
+            background-color: #f5e6d8;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), 
+                url('https://cdnjs.cloudflare.com/ajax/libs/placeholders/4.0.0/img/placeholder.png');
+            background-size: cover;
+            background-position: center;
+            padding: 20px;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 400px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+        }
+        
+        .tabs {
+            display: flex;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        .tab {
+            flex: 1;
+            text-align: center;
+            padding: 15px;
+            cursor: pointer;
+            font-weight: 600;
+            color: rgba(181, 69, 7, 0.9);
+            transition: all 0.3s ease;
+        }
+        
+        .tab.active {
+            background-color: rgba(181, 69, 7, 0.9);
+            color: #fff;
+        }
+        
+        .tab:hover:not(.active) {
+            background-color: #f5e6d8;
+        }
+        
+        .form-container {
+            padding: 30px;
+        }
+        
+        .form-title {
+            text-align: center;
+            margin-bottom: 20px;
+            color: rgba(181, 69, 7, 0.9);
+        }
+        
+        .form-title h2 {
+            font-size: 24px;
+            margin-bottom: 5px;
+        }
+        
+        .form-title p {
+            font-size: 14px;
+            color: #666;
+        }
+        
+        .input-group {
+            margin-bottom: 20px;
+        }
+        
+        .input-group label {
+            display: block;
+            margin-bottom: 5px;
+            color: #333;
+            font-weight: 500;
+            font-size: 14px;
+        }
+        
+        .input-group input {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 14px;
+            transition: border-color 0.3s;
+        }
+        
+        .input-group input:focus {
+            outline: none;
+            border-color: rgba(181, 69, 7, 0.9);
+        }
+        
+        .btn {
+            width: 100%;
+            padding: 12px;
+            background-color: rgba(181, 69, 7, 0.9);
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        .btn:hover {
+            background-color: rgba(181, 69, 7, 0.9);
+        }
+        
+        .btn:disabled {
+            background-color: #ccc;
+            cursor: not-allowed;
+        }
+        
+        .form-footer {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 14px;
+            color: #666;
+        }
+        
+        .form-footer a {
+            color: rgba(181, 69, 7, 0.9);
+            text-decoration: none;
+            font-weight: 500;
+        }
+        
+        .form-footer a:hover {
+            text-decoration: underline;
+        }
+        
+        .logo {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        
+        .logo img {
+            height: 80px;
+        }
+        
+        .logo h1 {
+            color: rgba(181, 69, 7, 0.9);
+            font-size: 20px;
+            margin-top: 10px;
+        }
+        
+        .form-content {
+            display: none;
+        }
+        
+        .form-content.active {
+            display: block;
+        }
+        
+        .error-message {
+            color: rgba(181, 69, 7, 0.9);
+            font-size: 12px;
+            margin-top: 5px;
+            text-align: left;
+            display: none;
+        }
+        
+        .success-message {
+            background-color: #d4edda;
+            color: #155724;
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 15px;
+            display: none;
+            text-align: center;
+        }
+
+        .reset-link {
+            display: block;
+            text-align: right;
+            font-size: 13px;
+            color: rgba(181, 69, 7, 0.9);
+            text-decoration: none;
+            margin-top: -15px;
+            margin-bottom: 20px;
+        }
+
+        .reset-link:hover {
+            text-decoration: underline;
+        }
+
+        .step {
+            display: none;
+        }
+
+        .step.active {
+            display: block;
+        }
+
+        .loading {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid #f3f3f3;
+            border-top: 3px solid rgba(181, 69, 7, 0.9);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin-right: 10px;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        /* Responsive design */
+        @media (max-width: 480px) {
+            .container {
+                max-width: 100%;
+            }
+            
+            .form-container {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="tabs">
+            <div class="tab active" id="login-tab">Login</div>
+            <div class="tab" id="register-tab">Registrasi</div>
+            <div class="tab" id="reset-tab">Reset</div>
+        </div>
+        
+        <div class="form-container">
+            <!-- Login Form -->
+            <div class="form-content active" id="login-form">
+                <div class="logo">
+                    <img src="css/—Pngtree—wedang ronde traditional drink indonesia_8130577.png" alt="Logo Wedang Ronde">
+                    <h1>Warung Wedang Ronde</h1>
+                </div>
+                
+                <div class="form-title">
+                    <h2>Selamat Datang Kembali!</h2>
+                    <p>Masuk ke akun Anda untuk menikmati wedang ronde terbaik</p>
+                </div>
+                
+                <div class="success-message" id="login-success">
+                    Login berhasil! Anda akan dialihkan ke halaman utama...
+                </div>
+                
+                <form id="loginForm">
+                    <div class="input-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" placeholder="Masukkan email Anda" required>
+                        <div class="error-message" id="email-error"></div>
+                    </div>
+                    
+                    <div class="input-group">
+                        <label for="password">Password</label>
+                        <input type="password" id="password" name="password" placeholder="Masukkan password Anda" required>
+                        <div class="error-message" id="password-error"></div>
+                    </div>
+                    
+                    <a href="#" class="reset-link" id="forgot-password">Lupa password?</a>
+                    
+                    <button type="submit" class="btn" id="login-btn">Masuk</button>
+                </form>
+                
+                <div class="form-footer">
+                    <p>Belum punya akun? <a href="#" id="show-register">Daftar sekarang</a></p>
+                </div>
+            </div>
+            
+            <!-- Register Form -->
+            <div class="form-content" id="register-form">
+                <div class="logo">
+                    <img src="css/—Pngtree—wedang ronde traditional drink indonesia_8130577.png" alt="Logo Wedang Ronde">
+                    <h1>Warung Wedang Ronde</h1>
+                </div>
+                
+                <div class="form-title">
+                    <h2>Buat Akun Baru</h2>
+                    <p>Daftar untuk mendapatkan pengalaman wedang ronde terbaik</p>
+                </div>
+                
+                <div class="success-message" id="register-success">
+                    Registrasi berhasil! Silakan login dengan akun baru Anda.
+                </div>
+
+                <form id="registerForm">
+                    <div class="input-group">
+                        <label for="name">Nama Lengkap</label>
+                        <input type="text" id="name" name="name" placeholder="Masukkan nama lengkap Anda" required>
+                        <div class="error-message" id="name-error"></div>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="reg-email">Email</label>
+                        <input type="email" id="reg-email" name="reg-email" placeholder="Masukkan email Anda" required>
+                        <div class="error-message" id="reg-email-error"></div>
+                    </div>
+                    
+                    <div class="input-group">
+                        <label for="phone">Nomor Telepon</label>
+                        <input type="tel" id="phone" name="phone" placeholder="Masukkan nomor telepon Anda" required>
+                        <div class="error-message" id="phone-error"></div>
+                    </div>
+                    
+                    <div class="input-group">
+                        <label for="reg-password">Password</label>
+                        <input type="password" id="reg-password" name="reg-password" placeholder="Buat password" required>
+                        <div class="error-message" id="reg-password-error"></div>
+                    </div>
+                    
+                    <div class="input-group">
+                        <label for="confirm-password">Konfirmasi Password</label>
+                        <input type="password" id="confirm-password" name="confirm-password" placeholder="Konfirmasi password Anda" required>
+                        <div class="error-message" id="confirm-password-error"></div>
+                    </div>
+                    
+                    <button type="submit" class="btn" id="register-btn">Daftar</button>
+                </form>
+                
+                <div class="form-footer">
+                    <p>Sudah punya akun? <a href="#" id="show-login">Masuk sekarang</a></p>
+                </div>
+            </div>
+
+            <!-- Reset Password Form -->
+            <div class="form-content" id="reset-form">
+                <div class="logo">
+                    <img src="css/—Pngtree—wedang ronde traditional drink indonesia_8130577.png" alt="Logo Wedang Ronde">
+                    <h1>Warung Wedang Ronde</h1>
+                </div>
+                
+                <div class="form-title">
+                    <h2>Reset Password</h2>
+                    <p>Kami akan membantu Anda memulihkan akses akun</p>
+                </div>
+
+                <!-- Step 1: Enter Email -->
+                <div class="step active" id="reset-step-1">
+                    <div class="success-message" id="reset-email-sent">
+                        Kode verifikasi telah dikirim. Kode: <span id="verification-code-display"></span>
+                    </div>
+                    
+                    <form id="resetEmailForm">
+                        <div class="input-group">
+                            <label for="reset-email">Email</label>
+                            <input type="email" id="reset-email" name="reset-email" placeholder="Masukkan email Anda" required>
+                            <div class="error-message" id="reset-email-error"></div>
+                        </div>
+                        
+                        <button type="submit" class="btn" id="reset-email-btn">Kirim Kode Verifikasi</button>
+                    </form>
+                </div>
+
+                <!-- Step 2: Enter Verification Code -->
+                <div class="step" id="reset-step-2">
+                    <form id="verificationForm">
+                        <div class="input-group">
+                            <label for="verification-code">Kode Verifikasi</label>
+                            <input type="text" id="verification-code" name="verification-code" placeholder="Masukkan kode verifikasi" required>
+                            <div class="error-message" id="verification-code-error"></div>
+                        </div>
+                        
+                        <button type="submit" class="btn" id="verify-btn">Verifikasi Kode</button>
+                    </form>
+                </div>
+
+                <!-- Step 3: Create New Password -->
+                <div class="step" id="reset-step-3">
+                    <div class="success-message" id="reset-success">
+                        Password berhasil diubah! Anda akan dialihkan ke halaman login...
+                    </div>
+                    
+                    <form id="newPasswordForm">
+                        <div class="input-group">
+                            <label for="new-password">Password Baru</label>
+                            <input type="password" id="new-password" name="new-password" placeholder="Masukkan password baru" required>
+                            <div class="error-message" id="new-password-error"></div>
+                        </div>
+                        
+                        <div class="input-group">
+                            <label for="confirm-new-password">Konfirmasi Password Baru</label>
+                            <input type="password" id="confirm-new-password" name="confirm-new-password" placeholder="Konfirmasi password baru Anda" required>
+                            <div class="error-message" id="confirm-new-password-error"></div>
+                        </div>
+                        
+                        <button type="submit" class="btn" id="new-password-btn">Simpan Password Baru</button>
+                    </form>
+                </div>
+                
+                <div class="form-footer">
+                    <p><a href="#" id="back-to-login">Kembali ke halaman login</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // DOM Elements
+        const loginTab = document.getElementById('login-tab');
+        const registerTab = document.getElementById('register-tab');
+        const resetTab = document.getElementById('reset-tab');
+        const loginForm = document.getElementById('login-form');
+        const registerForm = document.getElementById('register-form');
+        const resetForm = document.getElementById('reset-form');
+        const showRegisterLink = document.getElementById('show-register');
+        const showLoginLink = document.getElementById('show-login');
+        const forgotPasswordLink = document.getElementById('forgot-password');
+        const backToLoginLink = document.getElementById('back-to-login');
+        
+        // Reset steps
+        const resetStep1 = document.getElementById('reset-step-1');
+        const resetStep2 = document.getElementById('reset-step-2');
+        const resetStep3 = document.getElementById('reset-step-3');
+        
+        // Tab switching functions
+        function switchToLoginTab() {
+            loginTab.classList.add('active');
+            registerTab.classList.remove('active');
+            resetTab.classList.remove('active');
+            loginForm.classList.add('active');
+            registerForm.classList.remove('active');
+            resetForm.classList.remove('active');
+        }
+        
+        function switchToRegisterTab() {
+            registerTab.classList.add('active');
+            loginTab.classList.remove('active');
+            resetTab.classList.remove('active');
+            registerForm.classList.add('active');
+            loginForm.classList.remove('active');
+            resetForm.classList.remove('active');
+        }
+
+        function switchToResetTab() {
+            resetTab.classList.add('active');
+            loginTab.classList.remove('active');
+            registerTab.classList.remove('active');
+            resetForm.classList.add('active');
+            loginForm.classList.remove('active');
+            registerForm.classList.remove('active');
+            
+            // Reset to step 1
+            resetStep1.classList.add('active');
+            resetStep2.classList.remove('active');
+            resetStep3.classList.remove('active');
+        }
+        
+        // Event listeners
+        loginTab.addEventListener('click', switchToLoginTab);
+        registerTab.addEventListener('click', switchToRegisterTab);
+        resetTab.addEventListener('click', switchToResetTab);
+        showRegisterLink.addEventListener('click', (e) => { e.preventDefault(); switchToRegisterTab(); });
+        showLoginLink.addEventListener('click', (e) => { e.preventDefault(); switchToLoginTab(); });
+        forgotPasswordLink.addEventListener('click', (e) => { e.preventDefault(); switchToResetTab(); });
+        backToLoginLink.addEventListener('click', (e) => { e.preventDefault(); switchToLoginTab(); });
+        
+        // AJAX Helper function
+        function sendAjaxRequest(url, data, callback) {
+            const xhr = new XMLHttpRequest();
+            xhr.open('POST', url, true);
+            xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+            
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState === 4 && xhr.status === 200) {
+                    try {
+                        const response = JSON.parse(xhr.responseText);
+                        callback(response);
+                    } catch (e) {
+                        callback({ success: false, message: 'Terjadi kesalahan sistem' });
+                    }
+                }
+            };
+            
+            xhr.send(data);
+        }
+        
+        // Login form handler
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            clearErrors();
+            
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            const loginBtn = document.getElementById('login-btn');
+            
+            loginBtn.disabled = true;
+            loginBtn.innerHTML = '<span class="loading"></span>Masuk...

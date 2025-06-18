@@ -1,0 +1,998 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Transaksi - Warung Wedang Ronde</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Poppins", sans-serif;
+      }
+
+      body {
+        font-family: "Poppins", sans-serif;
+        background-color: #f5e6d8;
+        color: #333;
+        line-height: 1.6;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+      }
+
+      /* Navbar */
+      header {
+        background-color: rgba(181, 69, 7, 0.9);
+        color: white;
+        padding: 1rem 0;
+        position: fixed;
+        width: 100%;
+        top: 0;
+        z-index: 1000;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+      }
+
+      .container {
+        width: 90%;
+        margin: 0 auto;
+      }
+
+      .navbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 20px;
+      }
+
+      .logo {
+        font-size: 1.8rem;
+        font-weight: 700;
+        color: white;
+        text-decoration: none;
+      }
+
+      .logo span {
+        color: #ffcc80;
+      }
+
+      .nav-links {
+        display: flex;
+        list-style: none;
+        gap: 15px;
+      }
+
+      .nav-links li {
+        margin-left: 20px;
+      }
+
+      .nav-links a {
+        color: white;
+        text-decoration: none;
+        font-weight: 500;
+        transition: color 0.3s;
+        padding: 8px 12px;
+      }
+
+      .nav-links a:hover {
+        color: #ffcc80;
+        background-color: rgba(255, 255, 255, 0.1);
+        border-radius: 5px;
+      }
+
+      /* Main Container */
+      .main-container {
+        max-width: 1000px;
+        margin: 80px auto 20px;
+        padding: 20px;
+        flex-grow: 1;
+      }
+
+      .page-title {
+        color: rgba(181, 69, 7, 0.9);
+        text-align: center;
+        margin-bottom: 30px;
+        font-size: 2rem;
+        font-weight: bold;
+      }
+
+      /* Status Section */
+      .status-section {
+        background: linear-gradient(135deg, #28a745, #20c997);
+        color: white;
+        border-radius: 15px;
+        padding: 2rem;
+        text-align: center;
+        margin-bottom: 2rem;
+        box-shadow: 0 10px 30px rgba(40, 167, 69, 0.3);
+      }
+
+      .status-icon {
+        font-size: 4rem;
+        margin-bottom: 1rem;
+        animation: bounce 2s infinite;
+      }
+
+      @keyframes bounce {
+        0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+        40% { transform: translateY(-10px); }
+        60% { transform: translateY(-5px); }
+      }
+
+      .status-title {
+        font-size: 2rem;
+        font-weight: 700;
+        margin-bottom: 0.5rem;
+      }
+
+      .status-subtitle {
+        font-size: 1.1rem;
+        opacity: 0.9;
+      }
+
+      /* Transaction Details */
+      .transaction-card {
+        background-color: #fff;
+        border-radius: 15px;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        padding: 2rem;
+        margin-bottom: 2rem;
+      }
+
+      .card-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 1.5rem;
+        padding-bottom: 1rem;
+        border-bottom: 2px solid #f5e6d8;
+      }
+
+      .transaction-id {
+        font-size: 1.2rem;
+        font-weight: 600;
+        color: rgba(181, 69, 7, 0.9);
+      }
+
+      .transaction-date {
+        color: #666;
+        font-size: 0.9rem;
+      }
+
+      /* Customer Info */
+      .customer-info {
+        background-color: #f8f9fa;
+        border-radius: 10px;
+        padding: 1.5rem;
+        margin-bottom: 1.5rem;
+      }
+
+      .info-title {
+        color: rgba(181, 69, 7, 0.9);
+        font-weight: 600;
+        margin-bottom: 1rem;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .info-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 1rem;
+      }
+
+      .info-item {
+        display: flex;
+        flex-direction: column;
+      }
+
+      .info-label {
+        font-size: 0.9rem;
+        color: #666;
+        margin-bottom: 0.25rem;
+      }
+
+      .info-value {
+        font-weight: 500;
+        color: #333;
+      }
+
+      /* Order Items */
+      .order-items {
+        margin-bottom: 1.5rem;
+      }
+
+      .order-item {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1rem;
+        border-bottom: 1px solid #f5e6d8;
+        transition: background-color 0.3s;
+      }
+
+      .order-item:hover {
+        background-color: rgba(245, 230, 216, 0.3);
+      }
+
+      .order-item:last-child {
+        border-bottom: none;
+      }
+
+      .item-info {
+        flex: 1;
+      }
+
+      .item-name {
+        font-weight: 600;
+        color: #333;
+        margin-bottom: 0.25rem;
+      }
+
+      .item-details {
+        color: #666;
+        font-size: 0.9rem;
+      }
+
+      .item-total {
+        font-weight: 600;
+        color: rgba(181, 69, 7, 0.9);
+        font-size: 1.1rem;
+      }
+
+      /* Payment Summary */
+      .payment-summary {
+        background-color: #f8f9fa;
+        border-radius: 10px;
+        padding: 1.5rem;
+        margin-bottom: 1.5rem;
+      }
+
+      .summary-row {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 0.8rem;
+        padding: 0.5rem 0;
+      }
+
+      .summary-row:last-child {
+        margin-bottom: 0;
+      }
+
+      .summary-row.total {
+        font-weight: 700;
+        font-size: 1.2rem;
+        border-top: 2px solid rgba(181, 69, 7, 0.2);
+        margin-top: 1rem;
+        padding-top: 1rem;
+        color: rgba(181, 69, 7, 0.9);
+      }
+
+      .summary-label {
+        color: #666;
+      }
+
+      .summary-value {
+        font-weight: 500;
+        color: #333;
+      }
+
+      /* Payment Method */
+      .payment-method-display {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        background-color: #f8f9fa;
+        padding: 1rem;
+        border-radius: 10px;
+        margin-bottom: 1.5rem;
+      }
+
+      .payment-icon {
+        width: 50px;
+        height: 50px;
+        background-color: rgba(181, 69, 7, 0.1);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: rgba(181, 69, 7, 0.9);
+        font-size: 1.5rem;
+      }
+
+      .payment-info h4 {
+        margin: 0;
+        color: #333;
+        font-size: 1.1rem;
+      }
+
+      .payment-info p {
+        margin: 0;
+        color: #666;
+        font-size: 0.9rem;
+      }
+
+      /* Action Buttons */
+      .action-buttons {
+        display: flex;
+        gap: 1rem;
+        justify-content: center;
+        flex-wrap: wrap;
+        margin-top: 2rem;
+      }
+
+      .btn {
+        padding: 0.75rem 1.5rem;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        font-weight: 600;
+        transition: all 0.3s;
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 1rem;
+      }
+
+      .btn-primary {
+        background-color: rgba(181, 69, 7, 0.9);
+        color: white;
+      }
+
+      .btn-primary:hover {
+        background-color: rgba(181, 69, 7, 1);
+        transform: translateY(-2px);
+      }
+
+      .btn-secondary {
+        background-color: #6c757d;
+        color: white;
+      }
+
+      .btn-secondary:hover {
+        background-color: #5a6268;
+        transform: translateY(-2px);
+      }
+
+      .btn-outline {
+        background-color: transparent;
+        color: rgba(181, 69, 7, 0.9);
+        border: 2px solid rgba(181, 69, 7, 0.9);
+      }
+
+      .btn-outline:hover {
+        background-color: rgba(181, 69, 7, 0.9);
+        color: white;
+      }
+
+      /* Empty State */
+      .empty-state {
+        text-align: center;
+        padding: 3rem;
+        color: #666;
+      }
+
+      .empty-state i {
+        font-size: 4rem;
+        color: #ddd;
+        margin-bottom: 1rem;
+      }
+
+      .empty-state h3 {
+        margin-bottom: 0.5rem;
+        color: #999;
+      }
+
+      .empty-state p {
+        margin-bottom: 2rem;
+      }
+
+      /* Toast Notification */
+      .toast {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        background-color: rgba(181, 69, 7, 0.9);
+        color: white;
+        padding: 12px 20px;
+        border-radius: 8px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        z-index: 1000;
+        transform: translateY(100px);
+        opacity: 0;
+        transition: all 0.5s;
+        max-width: 400px;
+      }
+
+      .toast.show {
+        transform: translateY(0);
+        opacity: 1;
+      }
+
+      .toast.success {
+        background-color: #28a745;
+      }
+
+      .toast.error {
+        background-color: #dc3545;
+      }
+
+      .toast-message {
+        margin-right: 15px;
+      }
+
+      .toast-close {
+        background: none;
+        border: none;
+        color: white;
+        cursor: pointer;
+        font-size: 18px;
+        padding: 0;
+        width: 20px;
+        height: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      /* Footer */
+      footer {
+        background-color: rgba(181, 69, 7, 0.9);
+        color: white;
+        padding: 1rem 0;
+        text-align: center;
+        width: 100%;
+        margin-top: auto;
+      }
+
+      footer p {
+        margin: 0.5rem 0;
+      }
+
+      /* Responsive Design */
+      @media (max-width: 768px) {
+        .main-container {
+          padding: 10px;
+        }
+        
+        .card-header {
+          flex-direction: column;
+          text-align: center;
+          gap: 10px;
+        }
+        
+        .info-grid {
+          grid-template-columns: 1fr;
+        }
+        
+        .order-item {
+          flex-direction: column;
+          text-align: center;
+          gap: 10px;
+        }
+        
+        .action-buttons {
+          flex-direction: column;
+        }
+        
+        .status-section {
+          padding: 1.5rem;
+        }
+        
+        .status-title {
+          font-size: 1.5rem;
+        }
+        
+        .nav-links {
+          display: none;
+        }
+      }
+
+      /* Loading Animation */
+      .loading {
+        display: inline-block;
+        width: 20px;
+        height: 20px;
+        border: 3px solid rgba(255, 255, 255, 0.3);
+        border-radius: 50%;
+        border-top-color: #fff;
+        animation: spin 1s ease-in-out infinite;
+      }
+
+      @keyframes spin {
+        to { transform: rotate(360deg); }
+      }
+    </style>
+    <!-- Font awesome untuk ikon -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  </head>
+  <body>
+    <header>
+      <div class="container">
+        <nav class="navbar">
+          <a href="#" class="logo">Wedang<span>Ronde</span></a>
+          <ul class="nav-links">
+            <li><a href="./index.html">Beranda</a></li>
+            <li><a href="./profile.html">Profil</a></li>
+            <li><a href="./about.html">Tentang Kami</a></li>
+            <li><a href="./katalog.html">Katalog</a></li>
+            <li><a href="./pembayaran.html">Pembayaran</a></li>
+            <li><a href="./transaksi.html">Transaksi</a></li>
+            <li><a href="./rekaptransaksi.html">Riwayat Transaksi</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <div class="main-container">
+      <h1 class="page-title">Hasil Transaksi</h1>
+
+      <!-- Success Status Section -->
+      <div class="status-section" id="statusSection">
+        <div class="status-icon">
+          <i class="fas fa-check-circle"></i>
+        </div>
+        <div class="status-title">Pesanan Berhasil!</div>
+        <div class="status-subtitle">Terima kasih atas pesanan Anda. Pesanan sedang diproses.</div>
+      </div>
+
+      <!-- Transaction Details -->
+      <div class="transaction-card" id="transactionCard">
+        <!-- Content will be populated by JavaScript -->
+      </div>
+
+      <!-- Empty State (initially hidden) -->
+      <div class="empty-state" id="emptyState" style="display: none;">
+        <i class="fas fa-receipt"></i>
+        <h3>Tidak ada transaksi</h3>
+        <p>Belum ada transaksi yang tersedia untuk ditampilkan</p>
+        <a href="./katalog.html" class="btn btn-primary">
+          <i class="fas fa-utensils"></i> Mulai Pesan
+        </a>
+      </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="toast">
+      <div class="toast-message"></div>
+      <button class="toast-close">&times;</button>
+    </div>
+
+    <footer>
+      <p>&copy; 2025 Wedang Ronde. All rights reserved.</p>
+    </footer>
+
+    <script>
+      // Global variables
+      let currentTransaction = null;
+
+      // Format currency
+      function formatCurrency(amount) {
+        return new Intl.NumberFormat('id-ID', {
+          style: 'currency',
+          currency: 'IDR',
+          minimumFractionDigits: 0,
+          maximumFractionDigits: 0
+        }).format(amount);
+      }
+
+      // Format date
+      function formatDate(dateString) {
+        const date = new Date(dateString);
+        return date.toLocaleDateString('id-ID', {
+          weekday: 'long',
+          year: 'numeric',
+          month: 'long',
+          day: 'numeric',
+          hour: '2-digit',
+          minute: '2-digit'
+        });
+      }
+
+      // Get payment method info
+      function getPaymentMethodInfo(method) {
+        const methods = {
+          'cash': {
+            icon: 'fas fa-money-bill-wave',
+            name: 'Bayar Tunai',
+            description: 'Bayar saat pesanan tiba'
+          },
+          'transfer': {
+            icon: 'fas fa-university',
+            name: 'Transfer Bank',
+            description: 'BCA, BNI, BRI, Mandiri'
+          },
+          'ewallet': {
+            icon: 'fas fa-mobile-alt',
+            name: 'E-Wallet',
+            description: 'GoPay, OVO, DANA, ShopeePay'
+          },
+          'qris': {
+            icon: 'fas fa-qrcode',
+            name: 'QRIS',
+            description: 'Scan & bayar dengan QR'
+          }
+        };
+        
+        return methods[method] || methods['cash'];
+      }
+
+      // DOM Elements
+      const statusSection = document.getElementById('statusSection');
+      const transactionCard = document.getElementById('transactionCard');
+      const emptyState = document.getElementById('emptyState');
+      const toast = document.getElementById('toast');
+      const toastMessage = document.querySelector('.toast-message');
+      const toastClose = document.querySelector('.toast-close');
+
+      // Load transaction data when page loads
+      window.addEventListener('load', function() {
+        loadTransactionData();
+      });
+
+      // Load current transaction from localStorage
+      function loadTransactionData() {
+        try {
+          const transactionData = localStorage.getItem('currentTransaction');
+          
+          if (!transactionData) {
+            showEmptyState();
+            return;
+          }
+
+          currentTransaction = JSON.parse(transactionData);
+          renderTransaction();
+          kirimKeDatabase(); 
+
+          function loadTransactionData() {
+  try {
+    const transactionData = localStorage.getItem('currentTransaction');
+    
+    if (!transactionData) {
+      showEmptyState();
+      return;
+    }
+
+    currentTransaction = JSON.parse(transactionData);
+    renderTransaction();
+    kirimKeDatabase(); // Kirim ke database setelah render
+
+  } catch (error) {
+    console.error('Error loading transaction data:', error);
+    showEmptyState();
+  }
+}
+
+          
+        } catch (error) {
+          console.error('Error loading transaction data:', error);
+          showEmptyState();
+        }
+      }
+
+      // Show empty state
+      function showEmptyState() {
+        statusSection.style.display = 'none';
+        transactionCard.style.display = 'none';
+        emptyState.style.display = 'block';
+      }
+
+      // Render transaction details
+      function renderTransaction() {
+        if (!currentTransaction) {
+          showEmptyState();
+          return;
+        }
+
+        // Show transaction sections
+        statusSection.style.display = 'block';
+        transactionCard.style.display = 'block';
+        emptyState.style.display = 'none';
+
+        // Get payment method info
+        const paymentMethod = getPaymentMethodInfo(currentTransaction.paymentMethod);
+
+        // Render transaction card
+        transactionCard.innerHTML = `
+          <div class="card-header">
+            <div class="transaction-id">
+              <i class="fas fa-hashtag"></i> ${currentTransaction.id}
+            </div>
+            <div class="transaction-date">
+              <i class="fas fa-calendar-alt"></i> ${formatDate(currentTransaction.timestamp)}
+            </div>
+          </div>
+
+          <!-- Customer Information -->
+          <div class="customer-info">
+            <h3 class="info-title">
+              <i class="fas fa-user"></i> Informasi Pelanggan
+            </h3>
+            <div class="info-grid">
+              <div class="info-item">
+                <div class="info-label">Nama</div>
+                <div class="info-value">${currentTransaction.customer.name}</div>
+              </div>
+              <div class="info-item">
+                <div class="info-label">Nomor Telepon</div>
+                <div class="info-value">${currentTransaction.customer.phone}</div>
+              </div>
+              ${currentTransaction.customer.email ? `
+              <div class="info-item">
+                <div class="info-label">Email</div>
+                <div class="info-value">${currentTransaction.customer.email}</div>
+              </div>
+              ` : ''}
+              <div class="info-item">
+                <div class="info-label">Alamat</div>
+                <div class="info-value">${currentTransaction.customer.address}</div>
+              </div>
+              ${currentTransaction.customer.notes ? `
+              <div class="info-item">
+                <div class="info-label">Catatan</div>
+                <div class="info-value">${currentTransaction.customer.notes}</div>
+              </div>
+              ` : ''}
+            </div>
+          </div>
+
+          <!-- Order Items -->
+          <div class="order-items">
+            <h3 class="info-title">
+              <i class="fas fa-shopping-bag"></i> Detail Pesanan
+            </h3>
+            ${currentTransaction.items.map(item => `
+              <div class="order-item">
+                <div class="item-info">
+                  <div class="item-name">${item.name}</div>
+                  <div class="item-details">${formatCurrency(item.price)} × ${item.quantity}</div>
+                </div>
+                <div class="item-total">${formatCurrency(item.price * item.quantity)}</div>
+              </div>
+            `).join('')}
+          </div>
+
+          <!-- Payment Method -->
+          <div class="payment-method-display">
+            <div class="payment-icon">
+              <i class="${paymentMethod.icon}"></i>
+            </div>
+            <div class="payment-info">
+              <h4>${paymentMethod.name}</h4>
+              <p>${paymentMethod.description}</p>
+            </div>
+          </div>
+
+          <!-- Payment Summary -->
+          <div class="payment-summary">
+            <h3 class="info-title">
+              <i class="fas fa-calculator"></i> Ringkasan Pembayaran
+            </h3>
+            <div class="summary-row">
+              <span class="summary-label">Subtotal</span>
+              <span class="summary-value">${formatCurrency(currentTransaction.subtotal)}</span>
+            </div>
+            <div class="summary-row">
+              <span class="summary-label">Pajak (10%)</span>
+              <span class="summary-value">${formatCurrency(currentTransaction.tax)}</span>
+            </div>
+            <div class="summary-row">
+              <span class="summary-label">Ongkos Kirim</span>
+              <span class="summary-value">${formatCurrency(currentTransaction.shipping)}</span>
+            </div>
+            <div class="summary-row total">
+              <span class="summary-label">Total Pembayaran</span>
+              <span class="summary-value">${formatCurrency(currentTransaction.total)}</span>
+            </div>
+          </div>
+
+          <!-- Action Buttons -->
+          <div class="action-buttons">
+            <button onclick="printReceipt()" class="btn btn-outline">
+              <i class="fas fa-print"></i> Cetak Struk
+            </button>
+            <button onclick="downloadReceipt()" class="btn btn-secondary">
+              <i class="fas fa-download"></i> Unduh PDF
+            </button>
+            <a href="./katalog.html" class="btn btn-primary">
+              <i class="fas fa-plus"></i> Pesan Lagi
+            </a>
+          </div>
+        `;
+      }
+
+      // Print receipt function
+      function printReceipt() {
+        if (!currentTransaction) {
+          showToast('Tidak ada data transaksi untuk dicetak', 'error');
+          return;
+        }
+
+        // Create printable content
+        const printContent = createPrintableReceipt();
+        
+        // Open print window
+        const printWindow = window.open('', '_blank');
+        printWindow.document.write(printContent);
+        printWindow.document.close();
+        printWindow.print();
+        printWindow.close();
+        
+        showToast('Struk siap untuk dicetak', 'success');
+      }
+
+      // Create printable receipt content
+      function createPrintableReceipt() {
+        const paymentMethod = getPaymentMethodInfo(currentTransaction.paymentMethod);
+        
+        return `
+          <!DOCTYPE html>
+          <html>
+          <head>
+            <title>Struk Pembayaran - ${currentTransaction.id}</title>
+            <style>
+              body { font-family: Arial, sans-serif; max-width: 400px; margin: 0 auto; padding: 20px; }
+              .header { text-align: center; border-bottom: 2px solid #333; padding-bottom: 10px; margin-bottom: 20px; }
+              .section { margin-bottom: 15px; }
+              .section-title { font-weight: bold; margin-bottom: 8px; }
+              .item { display: flex; justify-content: space-between; margin-bottom: 5px; }
+              .total { border-top: 1px solid #333; padding-top: 8px; margin-top: 8px; font-weight: bold; }
+              .footer { text-align: center; margin-top: 20px; font-size: 12px; }
+            </style>
+          </head>
+          <body>
+            <div class="header">
+              <h2>WARUNG WEDANG RONDE</h2>
+              <p>Struk Pembayaran</p>
+              <p>${currentTransaction.id}</p>
+              <p>${formatDate(currentTransaction.timestamp)}</p>
+            </div>
+            
+            <div class="section">
+              <div class="section-title">Pelanggan:</div>
+              <p>${currentTransaction.customer.name}</p>
+              <p>${currentTransaction.customer.phone}</p>
+              <p>${currentTransaction.customer.address}</p>
+            </div>
+            
+            <div class="section">
+              <div class="section-title">Pesanan:</div>
+              ${currentTransaction.items.map(item => `
+                <div class="item">
+                  <span>${item.name} (${item.quantity}x)</span>
+                  <span>${formatCurrency(item.price * item.quantity)}</span>
+                </div>
+              `).join('')}
+            </div>
+            
+            <div class="section">
+              <div class="item">
+                <span>Subtotal</span>
+                <span>${formatCurrency(currentTransaction.subtotal)}</span>
+              </div>
+              <div class="item">
+                <span>Pajak (10%)</span>
+                <span>${formatCurrency(currentTransaction.tax)}</span>
+              </div>
+              <div class="item">
+                <span>Ongkos Kirim</span>
+                <span>${formatCurrency(currentTransaction.shipping)}</span>
+              </div>
+              <div class="item total">
+                <span>TOTAL</span>
+                <span>${formatCurrency(currentTransaction.total)}</span>
+              </div>
+            </div>
+            
+            <div class="section">
+              <div class="section-title">Metode Pembayaran:</div>
+              <p>${paymentMethod.name}</p>
+            </div>
+            
+            <div class="footer">
+              <p>Terima kasih atas pesanan Anda!</p>
+              <p>Warung Wedang Ronde - 2025</p>
+            </div>
+          </body>
+          </html>
+        `;
+      }
+
+      // Download receipt as PDF (simplified - shows message)
+      function downloadReceipt() {
+        if (!currentTransaction) {
+          showToast('Tidak ada data transaksi untuk diunduh', 'error');
+          return;
+        }
+
+        // In a real application, you would use a PDF library like jsPDF
+        // For now, we'll show a message
+        showToast('Fitur unduh PDF akan segera tersedia', 'info');
+      }
+
+      // Toast notification functions
+      function showToast(message, type = 'info') {
+        toastMessage.textContent = message;
+        toast.className = 'toast show';
+        
+        if (type === 'success') {
+          toast.classList.add('success');
+        } else if (type === 'error') {
+          toast.classList.add('error');
+        }
+        
+        // Auto-hide after 4 seconds
+        setTimeout(() => {
+          hideToast();
+        }, 4000);
+      }
+
+      function hideToast() {
+        toast.classList.remove('show', 'success', 'error');
+      }
+
+      // Close toast when clicking X
+      toastClose.addEventListener('click', hideToast);
+
+      // Auto-refresh transaction status (optional)
+      setInterval(() => {
+        // In a real application, you might want to check for updates
+        // For now, we'll just keep the current transaction
+      }, 30000); // Check every 30 seconds
+
+      fetch("transactions.php", {
+  method: "POST",
+  headers: { "Content-Type": "application/json" },
+  body: JSON.stringify(currentTransaction)
+})
+.then(res => res.json())
+.then(res => {
+  if (res.status === "success") {
+    showToast("Transaksi berhasil disimpan", "success");
+  } else if (res.status === "duplicate") {
+    showToast("Transaksi sudah pernah disimpan", "info");
+  } else {
+    showToast("Gagal simpan transaksi: " + res.message, "error");
+  }
+})
+.catch(err => {
+  console.error("Error kirim data:", err);
+  showToast("Error koneksi ke server", "error");
+});
+
+// Kirim data transaksi ke server setelah data berhasil dimuat
+function kirimKeDatabase() {
+  if (!currentTransaction) return;
+
+  fetch("transactions.php", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(currentTransaction)
+  })
+  .then(res => res.json())
+  .then(res => {
+    if (res.status === "success") {
+      showToast("Transaksi berhasil disimpan ke database", "success");
+    } else if (res.status === "duplicate") {
+      showToast("Transaksi sudah pernah disimpan", "info");
+    } else {
+      showToast("Gagal menyimpan: " + res.message, "error");
+    }
+  })
+  .catch(err => {
+    console.error("Gagal mengirim:", err);
+    showToast("Koneksi ke server gagal", "error");
+  });
+}
+
+
+    </script>
+  </body>
+</html>

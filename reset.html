@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Warung Wedang Ronde - Reset Password</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        body {
+            background-color: #f5e6d8;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), 
+                url('https://cdnjs.cloudflare.com/ajax/libs/placeholders/4.0.0/img/placeholder.png');
+            background-size: cover;
+            background-position: center;
+            padding: 20px;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 400px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+        }
+        
+        .form-container {
+            padding: 30px;
+        }
+        
+        .form-title {
+            text-align: center;
+            margin-bottom: 20px;
+            color: rgba(181, 69, 7, 0.9);
+        }
+        
+        .form-title h2 {
+            font-size: 24px;
+            margin-bottom: 5px;
+        }
+        
+        .form-title p {
+            font-size: 14px;
+            color: #666;
+        }
+        
+        .input-group {
+            margin-bottom: 20px;
+        }
+        
+        .input-group label {
+            display: block;
+            margin-bottom: 5px;
+            color: #333;
+            font-weight: 500;
+            font-size: 14px;
+        }
+        
+        .input-group input {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 14px;
+            transition: border-color 0.3s;
+        }
+        
+        .input-group input:focus {
+            outline: none;
+            border-color: rgba(181, 69, 7, 0.9);
+        }
+        
+        .btn {
+            width: 100%;
+            padding: 12px;
+            background-color: rgba(181, 69, 7, 0.9);
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        .btn:hover {
+            background-color: rgba(181, 69, 7, 0.9);
+        }
+        
+        .form-footer {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 14px;
+            color: #666;
+        }
+        
+        .form-footer a {
+            color: rgba(181, 69, 7, 0.9);
+            text-decoration: none;
+            font-weight: 500;
+        }
+        
+        .form-footer a:hover {
+            text-decoration: underline;
+        }
+        
+        .logo {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        
+        .logo img {
+            height: 80px;
+        }
+        
+        .logo h1 {
+            color: rgba(181, 69, 7, 0.9);
+            font-size: 20px;
+            margin-top: 10px;
+        }
+        
+        .error-message {
+            color: rgba(181, 69, 7, 0.9);
+            font-size: 12px;
+            margin-top: 5px;
+            text-align: left;
+            display: none;
+        }
+        
+        .success-message {
+            background-color: #d4edda;
+            color: #155724;
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 15px;
+            display: none;
+            text-align: center;
+        }
+
+        .step {
+            display: none;
+        }
+
+        .step.active {
+            display: block;
+        }
+
+        .step-indicator {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .step-number {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background-color: #ddd;
+            color: #666;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 10px;
+            font-weight: bold;
+            font-size: 14px;
+        }
+
+        .step-number.active {
+            background-color: rgba(181, 69, 7, 0.9);
+            color: #fff;
+        }
+
+        .step-number.completed {
+            background-color: #28a745;
+            color: #fff;
+        }
+
+        .info-box {
+            background-color: #e7f3ff;
+            border-left: 4px solid #2196f3;
+            padding: 10px 15px;
+            margin-bottom: 15px;
+            border-radius: 4px;
+            font-size: 13px;
+            color: #333;
+        }
+        
+        /* Responsive design */
+        @media (max-width: 480px) {
+            .container {
+                max-width: 100%;
+            }
+            
+            .form-container {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="form-container">
+            <div class="logo">
+                <img src="css/—Pngtree—wedang ronde traditional drink indonesia_8130577.png" alt="Logo Wedang Ronde">
+                <h1>Warung Wedang Ronde</h1>
+            </div>
+            
+            <div class="form-title">
+                <h2>Reset Password</h2>
+                <p>Kami akan membantu Anda memulihkan akses akun</p>
+            </div>
+
+            <div class="step-indicator">
+                <div class="step-number active" id="indicator-1">1</div>
+                <div class="step-number" id="indicator-2">2</div>
+                <div class="step-number" id="indicator-3">3</div>
+            </div>
+
+            <!-- Step 1: Enter Email -->
+            <div class="step active" id="reset-step-1">
+                <div class="success-message" id="reset-email-sent">
+                    Kode verifikasi telah dikirim ke email Anda. Silakan periksa kotak masuk email Anda.
+                </div>
+                
+                <form id="resetEmailForm">
+                    <div class="input-group">
+                        <label for="reset-email">Email</label>
+                        <input type="email" id="reset-email" name="reset-email" placeholder="Masukkan email Anda" required>
+                        <div class="error-message" id="reset-email-error"></div>
+                    </div>
+                    
+                    <button type="submit" class="btn">Kirim Kode Verifikasi</button>
+                </form>
+            </div>
+
+            <!-- Step 2: Enter Verification Code -->
+            <div class="step" id="reset-step-2">
+                <div class="info-box" id="code-info">
+                    Kode verifikasi telah dikirim ke email: <strong id="reset-email-display"></strong>
+                    <br><small>Untuk demo, gunakan kode: <span id="demo-code"></span></small>
+                </div>
+                
+                <form id="verificationForm">
+                    <div class="input-group">
+                        <label for="verification-code">Kode Verifikasi</label>
+                        <input type="text" id="verification-code" name="verification-code" placeholder="Masukkan kode verifikasi" required maxlength="6">
+                        <div class="error-message" id="verification-code-error"></div>
+                    </div>
+                    
+                    <button type="submit" class="btn">Verifikasi Kode</button>
+                </form>
+                
+                <div class="form-footer">
+                    <p><a href="#" id="resend-code">Kirim ulang kode</a></p>
+                </div>
+            </div>
+
+            <!-- Step 3: Create New Password -->
+            <div class="step" id="reset-step-3">
+                <div class="success-message" id="reset-success">
+                    Password berhasil diubah! Anda akan dialihkan ke halaman login...
+                </div>
+                
+                <form id="newPasswordForm">
+                    <div class="input-group">
+                        <label for="new-password">Password Baru</label>
+                        <input type="password" id="new-password" name="new-password" placeholder="Masukkan password baru" required>
+                        <div class="error-message" id="new-password-error"></div>
+                    </div>
+                    
+                    <div class="input-group">
+                        <label for="confirm-new-password">Konfirmasi Password Baru</label>
+                        <input type="password" id="confirm-new-password" name="confirm-new-password" placeholder="Konfirm

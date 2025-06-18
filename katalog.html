@@ -1,0 +1,1192 @@
+<!DOCTYPE html>
+<html lang="id">
+<<<<<<< HEAD
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Katalog Warung Wedang Ronde</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        body {
+            background-color: #f8f5f2;
+            padding-top: 70px;
+        }
+        
+        /* Navbar */
+        header {
+            background-color: #8B4513;
+            color: white;
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: white;
+            text-decoration: none;
+        }
+        
+        .logo span {
+            color: #ffcc80;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 2rem;
+        }
+        
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: #ffcc80;
+        }
+        
+        .catalog {
+            max-width: 1200px;
+            margin: 30px auto;
+            padding: 25px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .catalog-title {
+            color: rgba(181, 69, 7, 0.9);
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 2rem;
+            font-weight: bold;
+        }
+        
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 25px;
+        }
+        
+        .product-card {
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            padding: 20px;
+            text-align: center;
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            align-items: center; /* Memastikan semua elemen sejajar tengah */
+        }
+        
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .product-image {
+            width: 100%;
+            max-width: 200px; /* Ukuran maksimum gambar */
+            height: 180px;
+            object-fit: contain; /* Gambar tetap proporsional tanpa dipotong */
+            border-radius: 6px;
+            display: block;
+            margin: 0 auto; /* Menjadikan gambar berada di tengah */
+        }
+        
+        .product-title {
+            font-size: 1.3rem;
+            color: #333;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+        
+        .product-description {
+            color: #666;
+            margin-bottom: 15px;
+            font-size: 0.95rem;
+            line-height: 1.4;
+        }
+        
+        .product-price {
+            color: rgba(181, 69, 7, 0.9);
+            font-size: 1.4rem;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+        
+        .quantity-control {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        
+        .quantity-btn {
+            background-color: rgba(181, 69, 7, 0.9);
+            color: white;
+            border: none;
+            width: 32px;
+            height: 32px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+        
+        .quantity-btn:hover {
+            background-color: rgba(181, 69, 7, 0.9);
+        }
+        
+        .quantity-input {
+            width: 50px;
+            height: 32px;
+            text-align: center;
+            margin: 0 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+        
+        .add-to-cart {
+            background-color:rgba(181, 69, 7, 0.9);
+            color: white;
+            border: none;
+            padding: 10px 0;
+            width: 100%;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 1rem;
+            transition: background-color 0.3s;
+        }
+        
+        .add-to-cart:hover {
+            background-color: rgba(181, 69, 7, 0.9);
+        }
+        
+        @media (max-width: 768px) {
+            .product-grid {
+                grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+                gap: 15px;
+            }
+            
+            .catalog {
+                padding: 15px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .product-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav class="navbar">
+                <a href="#" class="logo">Wedang<span>Ronde</span></a>
+                <ul class="nav-links">
+                    <li><a href="./index.html">Beranda</a></li>
+                    <li><a href="./about.html">Tentang Kami</a></li>
+                    <li><a href="./katalog.html">Katalog</a></li>
+                    <li><a href="./pemesanan.html">Pemesanan</a></li>
+                    <li><a href="./pembayaran.html">Pembayaran</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    
+    <div class="catalog">
+        <h2 class="catalog-title">Menu Wedang Ronde</h2>
+        
+        <div class="product-grid">
+            <!-- Product 1 -->
+            <div class="product-card">
+                <img src="css/unnamed.jpg" alt="Wedang Ronde"class="product-image">
+                <h3 class="product-title">Wedang Ronde Original</h3>
+                <p class="product-description">Wedang ronde dengan kuah jahe dan kacang</p>
+                <div class="product-price">Rp 10.000</div>
+                <div class="quantity-control">
+                    <button class="quantity-btn" onclick="decreaseQuantity('qty1')">-</button>
+                    <input type="text" class="quantity-input" id="qty1" value="0">
+                    <button class="quantity-btn" onclick="increaseQuantity('qty1')">+</button>
+                </div>
+                <button class="add-to-cart" onclick="addToCart('Wedang Ronde', 10000, 'qty1')">Tambah ke Keranjang</button>
+            </div>
+            
+            <!-- Product 2 -->
+            <div class="product-card">
+                <img src="css/Resep-wedang-cemue-khas-Ngawai.jpg" alt="Wedang Cemue" class="product-image">
+                <h3 class="product-title">Wedang Cemue</h3>
+                <p class="product-description">Wedang dengan roti tawar dan kuah santan</p>
+                <div class="product-price">Rp 15.000</div>
+                <div class="quantity-control">
+                    <button class="quantity-btn" onclick="decreaseQuantity('qty2')">-</button>
+                    <input type="text" class="quantity-input" id="qty2" value="0">
+                    <button class="quantity-btn" onclick="increaseQuantity('qty2')">+</button>
+                </div>
+                <button class="add-to-cart" onclick="addToCart('Wedang Cemue', 15000, 'qty2')">Tambah ke Keranjang</button>
+            </div>
+            
+
+    
+    <script>
+        // Cart data
+        let cart = [];
+        
+        // Function to increase quantity
+        function increaseQuantity(id) {
+            const input = document.getElementById(id);
+            let value = parseInt(input.value);
+            input.value = value + 1;
+        }
+        
+        // Function to decrease quantity
+        function decreaseQuantity(id) {
+            const input = document.getElementById(id);
+            let value = parseInt(input.value);
+            if (value > 0) {
+                input.value = value - 1;
+            }
+        }
+        
+        // Function to add item to cart
+        function addToCart(name, price, qtyId) {
+            const quantity = parseInt(document.getElementById(qtyId).value);
+            
+            if (quantity <= 0) {
+                alert('Silakan pilih jumlah produk terlebih dahulu!');
+                return;
+            }
+            
+            // Check if item already exists in cart
+            const existingItemIndex = cart.findIndex(item => item.name === name);
+            
+            if (existingItemIndex > -1) {
+                // Update quantity if item exists
+                cart[existingItemIndex].quantity += quantity;
+            } else {
+                // Add new item to cart
+                cart.push({
+                    name: name,
+                    price: price,
+                    quantity: quantity
+                });
+            }
+            
+            // Reset quantity input
+            document.getElementById(qtyId).value = 0;
+            
+            // Show success message
+            alert(`${quantity} ${name} berhasil ditambahkan ke keranjang!`);
+            
+            // You can add code here to update cart display if needed
+            console.log('Cart contents:', cart);
+        }
+    </script>
+</body>
+=======
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Katalog Warung Wedang Ronde</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Poppins", sans-serif;
+      }
+
+      body {
+        font-family: "Poppins", sans-serif;
+        background-color: #f5e6d8;
+        color: #333;
+        line-height: 1.6;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+      }
+
+      /* Navbar */
+      header {
+        background-color: rgba(181, 69, 7, 0.9);
+        color: white;
+        padding: 1rem 0;
+        position: fixed;
+        width: 100%;
+        top: 0;
+        z-index: 1000;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+      }
+
+      .container {
+        width: 90%;
+        margin: 0 auto;
+      }
+
+      .navbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 20px;
+      }
+
+      .logo {
+        font-size: 1.8rem;
+        font-weight: 700;
+        color: white;
+        text-decoration: none;
+      }
+
+      .logo span {
+        color: #ffcc80;
+      }
+
+      .nav-links {
+        display: flex;
+        list-style: none;
+        gap: 15px;
+      }
+
+      .nav-links li {
+        margin-left: 20px;
+      }
+
+      .nav-links a {
+        color: white;
+        text-decoration: none;
+        font-weight: 500;
+        transition: color 0.3s;
+        padding: 8px 12px;
+      }
+
+      .nav-links a:hover {
+        color: #ffcc80;
+        background-color: rgba(255, 255, 255, 0.1);
+        border-radius: 5px;
+      }
+
+      /* Main Container */
+      .main-container {
+        max-width: 1200px;
+        margin: 80px auto 20px;
+        padding: 20px;
+        flex-grow: 1;
+      }
+
+      .page-title {
+        color: rgba(181, 69, 7, 0.9);
+        text-align: center;
+        margin-bottom: 30px;
+        font-size: 2rem;
+        font-weight: bold;
+      }
+
+      /* Content Layout */
+      .content-wrapper {
+        display: flex;
+        gap: 2rem;
+      }
+
+      .menu-section {
+        flex: 2;
+        background-color: #fff;
+        border-radius: 10px;
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+        padding: 1.5rem;
+      }
+
+      .order-section {
+        flex: 1;
+        background-color: #fff;
+        border-radius: 10px;
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+        padding: 1.5rem;
+        position: sticky;
+        top: 80px;
+        height: fit-content;
+      }
+
+      .section-title {
+        color: rgba(181, 69, 7, 0.9);
+        margin-bottom: 1rem;
+        padding-bottom: 0.5rem;
+        border-bottom: 2px solid #f5e6d8;
+      }
+
+      /* Menu Categories */
+      .menu-categories {
+        display: flex;
+        gap: 1rem;
+        margin-bottom: 1.5rem;
+        flex-wrap: wrap;
+      }
+
+      .category-btn {
+        background-color: #f5e6d8;
+        border: none;
+        padding: 0.5rem 1rem;
+        border-radius: 20px;
+        cursor: pointer;
+        transition: all 0.3s;
+        color: rgba(181, 69, 7, 0.9);
+        font-weight: 500;
+      }
+
+      .category-btn.active {
+        background-color: rgba(181, 69, 7, 0.9);
+        color: white;
+      }
+
+      /* Menu Items Grid */
+      .menu-items {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        gap: 1.5rem;
+      }
+
+      .menu-item {
+        background-color: #fff;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+        overflow: hidden;
+        transition: transform 0.3s;
+      }
+
+      .menu-item:hover {
+        transform: translateY(-5px);
+      }
+
+      .menu-item-image {
+        width: 100%;
+        height: 150px;
+        object-fit: cover;
+      }
+
+      .menu-item-info {
+        padding: 1rem;
+      }
+
+      .menu-item-title {
+        font-weight: 600;
+        margin-bottom: 0.5rem;
+        color: rgba(181, 69, 7, 0.9);
+      }
+
+      .menu-item-description {
+        color: #666;
+        margin-bottom: 15px;
+        font-size: 0.95rem;
+        line-height: 1.4;
+      }
+
+      .menu-item-price {
+        font-weight: 600;
+        margin-bottom: 1rem;
+        color: rgba(181, 69, 7, 0.9);
+      }
+
+      .menu-item-actions {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+
+      .item-counter {
+        display: flex;
+        align-items: center;
+      }
+
+      .counter-btn {
+        width: 30px;
+        height: 30px;
+        background-color: #f5e6d8;
+        border: none;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        font-weight: bold;
+        color: rgba(181, 69, 7, 0.9);
+        transition: all 0.3s;
+      }
+
+      .counter-btn:hover {
+        background-color: rgba(181, 69, 7, 0.9);
+        color: white;
+      }
+
+      .counter-value {
+        margin: 0 10px;
+        font-weight: 500;
+      }
+
+      .add-btn {
+        background-color: rgba(181, 69, 7, 0.9);
+        color: white;
+        border: none;
+        padding: 0.5rem 1rem;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: all 0.3s;
+      }
+
+      .add-btn:hover {
+        background-color: rgba(181, 69, 7, 1);
+      }
+
+      /* Cart Items */
+      .order-items {
+        margin-bottom: 1.5rem;
+      }
+
+      .order-item {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0.8rem 0;
+        border-bottom: 1px solid #f5e6d8;
+      }
+
+      .order-item-info {
+        flex: 1;
+      }
+
+      .order-item-title {
+        font-weight: 500;
+      }
+
+      .order-item-price {
+        font-size: 0.9rem;
+        color: #666;
+      }
+
+      .order-item-actions {
+        display: flex;
+        align-items: center;
+      }
+
+      .empty-cart {
+        text-align: center;
+        color: #666;
+        padding: 20px;
+      }
+
+      .empty-cart i {
+        font-size: 3rem;
+        color: #ddd;
+        margin-bottom: 1rem;
+      }
+
+      /* Order Summary */
+      .order-summary {
+        margin-top: 1.5rem;
+      }
+
+      .summary-row {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 0.5rem;
+      }
+
+      .total-row {
+        font-weight: 600;
+        padding-top: 0.5rem;
+        margin-top: 0.5rem;
+        border-top: 2px solid #f5e6d8;
+      }
+
+      .checkout-btn {
+        width: 100%;
+        background-color: rgba(181, 69, 7, 0.9);
+        color: white;
+        border: none;
+        padding: 0.8rem;
+        border-radius: 5px;
+        cursor: pointer;
+        font-weight: 600;
+        margin-top: 1rem;
+        transition: all 0.3s;
+      }
+
+      .checkout-btn:hover {
+        background-color: rgba(181, 69, 7, 1);
+      }
+
+      .checkout-btn:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+      }
+
+      /* Toast Notification */
+      .toast {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        background-color: rgba(181, 69, 7, 0.9);
+        color: white;
+        padding: 12px 20px;
+        border-radius: 5px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        z-index: 1000;
+        transform: translateY(100px);
+        opacity: 0;
+        transition: all 0.5s;
+      }
+
+      .toast.show {
+        transform: translateY(0);
+        opacity: 1;
+      }
+
+      .toast-message {
+        margin-right: 10px;
+      }
+
+      .toast-close {
+        background: none;
+        border: none;
+        color: white;
+        cursor: pointer;
+        font-size: 18px;
+      }
+
+      footer {
+        background-color: rgba(181, 69, 7, 0.9);
+        color: white;
+        padding: 1rem 0;
+        text-align: center;
+        width: 100%;
+        margin-top: auto;
+      }
+
+      footer p {
+        margin: 0.5rem 0;
+      }
+
+      /* Responsive Design */
+      @media (max-width: 968px) {
+        .content-wrapper {
+          flex-direction: column;
+        }
+            
+        .order-section {
+          position: static;
+        }
+      }
+        
+      @media (max-width: 768px) {
+        .menu-items {
+          grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        }
+      }
+        
+      @media (max-width: 480px) {
+        .menu-items {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+    <!-- Font awesome untuk ikon -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  </head>
+  <body>
+    <header>
+      <div class="container">
+        <nav class="navbar">
+          <a href="#" class="logo">Wedang<span>Ronde</span></a>
+          <ul class="nav-links">
+            <li><a href="./index.html">Beranda</a></li>
+            <li><a href="./profile.html">Profil</a></li>
+            <li><a href="./about.html">Tentang Kami</a></li>
+            <li><a href="./katalog.html">Katalog</a></li>
+            <li><a href="./pembayaran.html">Pembayaran</a></li>
+            <li><a href="./transaksi.html">Transaksi</a></li>
+            <li><a href="./rekaptransaksi.html">Riwayat Transaksi</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <div class="main-container">
+      <h1 class="page-title">Menu Wedang Ronde</h1>
+
+      <div class="content-wrapper">
+        <!-- Menu Section -->
+        <div class="menu-section">
+          <h2 class="section-title">Pilih Menu</h2>
+          
+          <div class="menu-categories">
+            <button class="category-btn active" data-category="all">Semua</button>
+            <button class="category-btn" data-category="wedang">Wedang</button>
+          </div>
+          
+          <div id="menuItemsContainer" class="menu-items">
+            <!-- Menu items will be populated here dynamically -->
+          </div>
+        </div>
+        
+        <!-- Order Section -->
+        <div class="order-section">
+          <h2 class="section-title">Pesanan Anda</h2>
+          
+          <div id="orderItemsContainer" class="order-items">
+            <!-- Order items will be populated here dynamically -->
+            <div class="empty-cart">
+              <i class="fas fa-shopping-cart"></i>
+              <p>Keranjang belanja Anda kosong</p>
+              <p>Silakan pilih menu untuk ditambahkan</p>
+            </div>
+          </div>
+          
+          <div class="order-summary">
+            <div class="summary-row">
+              <span>Subtotal</span>
+              <span id="subtotal">Rp 0</span>
+            </div>
+            <div class="summary-row">
+              <span>Pajak (10%)</span>
+              <span id="tax">Rp 0</span>
+            </div>
+            <div class="summary-row total-row">
+              <span>Total</span>
+              <span id="total">Rp 0</span>
+            </div>
+          </div>
+          
+          <button id="checkoutBtn" class="checkout-btn">Lanjutkan ke Pembayaran</button>
+        </div>
+      </div>
+    </div>
+    
+    <div id="toast" class="toast">
+      <div class="toast-message"></div>
+      <button class="toast-close">&times;</button>
+    </div>
+
+    <footer>
+      <p>&copy; 2025 Wedang Ronde. All rights reserved.</p>
+    </footer>
+
+    <script>
+      // Data menu
+      const menuData = [
+        {
+          id: 1,
+          name: "Wedang Ronde Original",
+          price: 10000,
+          image: "css/unnamed.jpg",
+          category: "wedang",
+          description: "Wedang ronde dengan kuah jahe dan kacang"
+        },
+        {
+          id: 2,
+          name: "Wedang Cemue",
+          price: 8000,
+          image: "css/Resep-wedang-cemue-khas-Ngawai.jpg",
+          category: "wedang",
+          description: "Wedang dengan roti tawar dan kuah santan"
+        },
+      ];
+      
+      // Array untuk menyimpan pesanan
+      let orderItems = [];
+      
+      // Format currency
+      function formatCurrency(amount) {
+        return new Intl.NumberFormat('id-ID', {
+          style: 'currency',
+          currency: 'IDR',
+          minimumFractionDigits: 0,
+          maximumFractionDigits: 0
+        }).format(amount);
+      }
+
+      // DOM Elements
+      const menuItemsContainer = document.getElementById('menuItemsContainer');
+      const orderItemsContainer = document.getElementById('orderItemsContainer');
+      const categoryButtons = document.querySelectorAll('.category-btn');
+      const subtotalElement = document.getElementById('subtotal');
+      const taxElement = document.getElementById('tax');
+      const totalElement = document.getElementById('total');
+      const checkoutBtn = document.getElementById('checkoutBtn');
+      const toast = document.getElementById('toast');
+      const toastMessage = document.querySelector('.toast-message');
+      const toastClose = document.querySelector('.toast-close');
+      
+      // Load cart from localStorage when page loads
+      window.addEventListener('load', function() {
+        loadCartFromLocalStorage();
+        renderMenuItems();
+      });
+
+      // Function to load cart from localStorage
+      function loadCartFromLocalStorage() {
+        const savedCart = localStorage.getItem('wedangRondeCart');
+        if (savedCart) {
+          orderItems = JSON.parse(savedCart);
+          renderOrderItems();
+          updateOrderSummary();
+        }
+      }
+
+      // Render menu items
+      function renderMenuItems(category = 'all') {
+        menuItemsContainer.innerHTML = '';
+        
+        const filteredItems = category === 'all' ? 
+          menuData : menuData.filter(item => item.category === category);
+        
+        filteredItems.forEach(item => {
+          const menuItemElement = document.createElement('div');
+          menuItemElement.className = 'menu-item';
+          menuItemElement.innerHTML = `
+            <img src="${item.image}" alt="${item.name}" class="menu-item-image">
+            <div class="menu-item-info">
+              <h3 class="menu-item-title">${item.name}</h3>
+              <p class="menu-item-description">${item.description}</p>
+              <p class="menu-item-price">${formatCurrency(item.price)}</p>
+              <div class="menu-item-actions">
+                <div class="item-counter">
+                  <button class="counter-btn minus" data-id="${item.id}">-</button>
+                  <span class="counter-value" id="counter-${item.id}">0</span>
+                  <button class="counter-btn plus" data-id="${item.id}">+</button>
+                </div>
+                <button class="add-btn" data-id="${item.id}">Tambah</button>
+              </div>
+            </div>
+          `;
+          menuItemsContainer.appendChild(menuItemElement);
+          
+          // Update counter if item exists in order
+          const existingItem = orderItems.find(orderItem => orderItem.id === item.id);
+          if (existingItem) {
+            document.getElementById(`counter-${item.id}`).textContent = existingItem.quantity;
+          }
+        });
+        
+        // Add event listeners
+        addMenuEventListeners();
+      }
+      
+      // Add event listeners for menu items
+      function addMenuEventListeners() {
+        // Add event listeners for counter buttons
+        document.querySelectorAll('.counter-btn.plus').forEach(btn => {
+          btn.addEventListener('click', function() {
+            const id = parseInt(this.getAttribute('data-id'));
+            updateCounter(id, 1);
+          });
+        });
+        
+        document.querySelectorAll('.counter-btn.minus').forEach(btn => {
+          btn.addEventListener('click', function() {
+            const id = parseInt(this.getAttribute('data-id'));
+            updateCounter(id, -1);
+          });
+        });
+        
+        // Add event listeners for add buttons
+        document.querySelectorAll('.add-btn').forEach(btn => {
+          btn.addEventListener('click', function() {
+            const id = parseInt(this.getAttribute('data-id'));
+            addToOrder(id);
+          });
+        });
+      }
+      
+      // Update counter
+      function updateCounter(id, change) {
+        const counterElement = document.getElementById(`counter-${id}`);
+        let count = parseInt(counterElement.textContent) + change;
+        
+        // Tidak boleh kurang dari 0
+        count = Math.max(0, count);
+        
+        counterElement.textContent = count;
+      }
+      
+      // Add to order
+      function addToOrder(id) {
+        const item = menuData.find(item => item.id === id);
+        const counterElement = document.getElementById(`counter-${id}`);
+        const quantity = parseInt(counterElement.textContent);
+        
+        if (quantity <= 0) {
+          showToast('Silakan pilih jumlah item terlebih dahulu');
+          return;
+        }
+        
+        // Check if item already in order
+        const existingItemIndex = orderItems.findIndex(orderItem => orderItem.id === id);
+        
+        if (existingItemIndex !== -1) {
+          // Update quantity
+          orderItems[existingItemIndex].quantity = quantity;
+        } else {
+          // Add new item to order
+          orderItems.push({
+            id: item.id,
+            name: item.name,
+            price: item.price,
+            quantity: quantity
+          });
+        }
+        
+        // Reset counter
+        counterElement.textContent = '0';
+        
+        // Save cart to localStorage
+        saveCartToLocalStorage();
+        
+        // Show toast
+        showToast(`${item.name} ditambahkan ke pesanan`);
+        
+        // Update order display
+        renderOrderItems();
+        updateOrderSummary();
+      }
+      
+      // Function to save cart to localStorage
+      function saveCartToLocalStorage() {
+        localStorage.setItem('wedangRondeCart', JSON.stringify(orderItems));
+      }
+      
+      // Render order items
+      function renderOrderItems() {
+        if (orderItems.length === 0) {
+          orderItemsContainer.innerHTML = `
+            <div class="empty-cart">
+              <i class="fas fa-shopping-cart"></i>
+              <p>Keranjang belanja Anda kosong</p>
+              <p>Silakan pilih menu untuk ditambahkan</p>
+            </div>
+          `;
+          return;
+        }
+        
+        orderItemsContainer.innerHTML = '';
+        
+        orderItems.forEach(item => {
+          const orderItem = document.createElement('div');
+          orderItem.className = 'order-item';
+          orderItem.innerHTML = `
+            <div class="order-item-info">
+              <h4 class="order-item-title">${item.name}</h4>
+              <p class="order-item-price">${formatCurrency(item.price)} x ${item.quantity}</p>
+            </div>
+            <div class="order-item-actions">
+              <div class="item-counter">
+                <button class="counter-btn minus" data-id="${item.id}">-</button>
+                <span class="counter-value">${item.quantity}</span>
+                <button class="counter-btn plus" data-id="${item.id}">+</button>
+              </div>
+              <button class="counter-btn" data-id="${item.id}" style="margin-left: 8px; background-color: #f8d7da; color: #721c24;">
+                <i class="fas fa-trash-alt"></i>
+              </button>
+            </div>
+          `;
+          orderItemsContainer.appendChild(orderItem);
+        });
+        
+        // Add event listeners for order item actions
+        addOrderItemEventListeners();
+      }
+      
+      // Add event listeners for order items
+      function addOrderItemEventListeners() {
+        orderItemsContainer.querySelectorAll('.counter-btn.plus').forEach(btn => {
+          btn.addEventListener('click', function() {
+            const id = parseInt(this.getAttribute('data-id'));
+            updateOrderItemQuantity(id, 1);
+          });
+        });
+        
+        orderItemsContainer.querySelectorAll('.counter-btn.minus').forEach(btn => {
+          btn.addEventListener('click', function() {
+            const id = parseInt(this.getAttribute('data-id'));
+            updateOrderItemQuantity(id, -1);
+          });
+        });
+        
+        orderItemsContainer.querySelectorAll('.fa-trash-alt').forEach(icon => {
+          const btn = icon.parentElement;
+          btn.addEventListener('click', function() {
+            const id = parseInt(this.getAttribute('data-id'));
+            removeOrderItem(id);
+          });
+        });
+      }
+      
+      // Update order item quantity
+      function updateOrderItemQuantity(id, change) {
+        const itemIndex = orderItems.findIndex(item => item.id === id);
+        
+        if (itemIndex !== -1) {
+          orderItems[itemIndex].quantity += change;
+          
+          // Remove item if quantity is 0 or less
+          if (orderItems[itemIndex].quantity <= 0) {
+            removeOrderItem(id);
+          } else {
+            // Save cart to localStorage
+            saveCartToLocalStorage();
+            
+            renderOrderItems();
+            updateOrderSummary();
+            
+            // Update counter in menu display if visible
+            const menuCounter = document.getElementById(`counter-${id}`);
+            if (menuCounter) {
+              menuCounter.textContent = orderItems[itemIndex].quantity;
+            }
+          }
+        }
+      }
+      
+      // Remove order item
+      function removeOrderItem(id) {
+        const itemName = orderItems.find(item => item.id === id)?.name;
+        orderItems = orderItems.filter(item => item.id !== id);
+        
+        // Save cart to localStorage
+        saveCartToLocalStorage();
+        
+        // Reset counter in menu display if visible
+        const menuCounter = document.getElementById(`counter-${id}`);
+        if (menuCounter) {
+          menuCounter.textContent = '0';
+        }
+        
+        // Show toast
+        if (itemName) {
+          showToast(`${itemName} dihapus dari pesanan`);
+        }
+        
+        renderOrderItems();
+        updateOrderSummary();
+      }
+      
+      // Update order summary
+      function updateOrderSummary() {
+        const subtotal = orderItems.reduce((total, item) => total + (item.price * item.quantity), 0);
+        const tax = subtotal * 0.1;
+        const total = subtotal + tax;
+        
+        subtotalElement.textContent = formatCurrency(subtotal);
+        taxElement.textContent = formatCurrency(tax);
+        totalElement.textContent = formatCurrency(total);
+        
+        // Enable/disable checkout button based on order items
+        checkoutBtn.disabled = orderItems.length === 0;
+        if (orderItems.length === 0) {
+          checkoutBtn.style.opacity = '0.5';
+          checkoutBtn.style.cursor = 'not-allowed';
+        } else {
+          checkoutBtn.style.opacity = '1';
+          checkoutBtn.style.cursor = 'pointer';
+        }
+      }
+      
+      // Checkout button - redirect to payment page directly
+      checkoutBtn.addEventListener('click', function() {
+        if (orderItems.length === 0) {
+          showToast('Silakan tambahkan item ke pesanan terlebih dahulu');
+          return;
+        }
+        
+        // Save current order to localStorage for the payment page
+        const orderData = {
+          items: orderItems,
+          subtotal: orderItems.reduce((total, item) => total + (item.price * item.quantity), 0),
+          tax: orderItems.reduce((total, item) => total + (item.price * item.quantity), 0) * 0.1,
+          total: orderItems.reduce((total, item) => total + (item.price * item.quantity), 0) * 1.1,
+          timestamp: new Date().toISOString()
+        };
+        
+        localStorage.setItem('pendingOrder', JSON.stringify(orderData));
+        
+        // Show loading message
+        showToast('Mengarahkan ke halaman pembayaran...');
+        
+        // Redirect to payment page after a short delay
+        setTimeout(() => {
+          window.location.href = 'pembayaran.html';
+        }, 1000);
+      });
+      
+      // Toast notification functions
+      function showToast(message) {
+        toastMessage.textContent = message;
+        toast.classList.add('show');
+        
+        // Auto-hide after 3 seconds
+        setTimeout(() => {
+          hideToast();
+        }, 3000);
+      }
+      
+      function hideToast() {
+        toast.classList.remove('show');
+      }
+      
+      // Close toast when clicking X
+      toastClose.addEventListener('click', hideToast);
+      
+      // Filter menu items by category
+      categoryButtons.forEach(button => {
+        button.addEventListener('click', function() {
+          // Remove active class from all buttons
+          categoryButtons.forEach(btn => {
+            btn.classList.remove('active');
+          });
+          
+          // Add active class to clicked button
+          this.classList.add('active');
+          
+          // Filter menu items
+          const category = this.getAttribute('data-category');
+          renderMenuItems(category);
+        });
+      });
+      
+    </script>
+  </body>
+>>>>>>> 7b73176 (update)
+</html>

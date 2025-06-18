@@ -1,0 +1,1267 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rekap Transaksi - Warung Wedang Ronde</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Poppins", sans-serif;
+        }
+
+        body {
+            font-family: "Poppins", sans-serif;
+            background-color: #f5e6d8;
+            color: #333;
+            line-height: 1.6;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Navbar */
+        header {
+            background-color: rgba(181, 69, 7, 0.9);
+            color: white;
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .container {
+            width: 90%;
+            margin: 0 auto;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: white;
+            text-decoration: none;
+        }
+
+        .logo span {
+            color: #ffcc80;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 15px;
+        }
+
+        .nav-links li {
+            margin-left: 20px;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+            padding: 8px 12px;
+        }
+
+        .nav-links a:hover {
+            color: #ffcc80;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 5px;
+        }
+
+        /* Main Container */
+        .main-container {
+            max-width: 1200px;
+            margin: 100px auto 20px;
+            padding: 20px;
+            flex-grow: 1;
+        }
+
+        /* Page Header */
+        .page-header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 30px 20px;
+            background: linear-gradient(135deg, rgba(181, 69, 7, 0.9), rgba(181, 69, 7, 0.7));
+            border-radius: 15px;
+            color: white;
+            box-shadow: 0 8px 25px rgba(181, 69, 7, 0.3);
+        }
+
+        .page-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .page-subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        /* Filter Controls */
+        .filter-controls {
+            background-color: #fff;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+        }
+
+        .filter-row {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            align-items: end;
+        }
+
+        .filter-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .filter-label {
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: #333;
+        }
+
+        .filter-input {
+            padding: 12px 15px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+
+        .filter-input:focus {
+            outline: none;
+            border-color: rgba(181, 69, 7, 0.9);
+        }
+
+        .btn {
+            padding: 12px 25px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 1rem;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, rgba(181, 69, 7, 0.9), rgba(181, 69, 7, 0.7));
+            color: white;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(181, 69, 7, 0.3);
+        }
+
+        .btn-secondary {
+            background-color: #6c757d;
+            color: white;
+        }
+
+        .btn-secondary:hover {
+            background-color: #5a6268;
+            transform: translateY(-2px);
+        }
+
+        /* Statistics Cards */
+        .stats-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .stat-card {
+            background: linear-gradient(135deg, #fff, #f8f9fa);
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            border-left: 5px solid rgba(181, 69, 7, 0.9);
+        }
+
+        .stat-icon {
+            font-size: 2.5rem;
+            color: rgba(181, 69, 7, 0.9);
+            margin-bottom: 15px;
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #333;
+            margin-bottom: 5px;
+        }
+
+        .stat-label {
+            font-size: 1rem;
+            color: #666;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* Transactions Table */
+        .transactions-section {
+            background-color: #fff;
+            border-radius: 15px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        .section-header {
+            background: linear-gradient(135deg, rgba(181, 69, 7, 0.9), rgba(181, 69, 7, 0.7));
+            color: white;
+            padding: 20px 30px;
+            font-size: 1.3rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .transactions-table-container {
+            overflow-x: auto;
+            max-height: 600px;
+            overflow-y: auto;
+        }
+
+        .transactions-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .transactions-table th,
+        .transactions-table td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid #eee;
+        }
+
+        .transactions-table th {
+            background-color: #f8f9fa;
+            font-weight: 600;
+            color: #333;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+
+        .transactions-table tr:hover {
+            background-color: #f8f9fa;
+        }
+
+        .transaction-id {
+            font-family: monospace;
+            font-weight: 600;
+            color: rgba(181, 69, 7, 0.9);
+            cursor: pointer;
+        }
+
+        .transaction-id:hover {
+            text-decoration: underline;
+        }
+
+        .status-badge {
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        .status-confirmed {
+            background-color: #d4edda;
+            color: #155724;
+        }
+
+        .status-pending {
+            background-color: #fff3cd;
+            color: #856404;
+        }
+
+        .status-cancelled {
+            background-color: #f8d7da;
+            color: #721c24;
+        }
+
+        .payment-method {
+            padding: 4px 8px;
+            border-radius: 6px;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .payment-cash {
+            background-color: #e8f5e8;
+            color: #2d5a2d;
+        }
+
+        .payment-transfer {
+            background-color: #e3f2fd;
+            color: #1565c0;
+        }
+
+        .payment-ewallet {
+            background-color: #f3e5f5;
+            color: #7b1fa2;
+        }
+
+        .payment-qris {
+            background-color: #fff8e1;
+            color: #f57c00;
+        }
+
+        /* Transaction Detail Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            animation: fadeIn 0.3s;
+        }
+
+        .modal-content {
+            background-color: #fff;
+            margin: 5% auto;
+            padding: 0;
+            border-radius: 15px;
+            width: 90%;
+            max-width: 800px;
+            max-height: 80vh;
+            overflow-y: auto;
+            animation: slideIn 0.3s;
+        }
+
+        .modal-header {
+            background: linear-gradient(135deg, rgba(181, 69, 7, 0.9), rgba(181, 69, 7, 0.7));
+            color: white;
+            padding: 20px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .modal-body {
+            padding: 30px;
+        }
+
+        .close {
+            color: white;
+            font-size: 2rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: opacity 0.3s;
+        }
+
+        .close:hover {
+            opacity: 0.7;
+        }
+
+        .detail-section {
+            margin-bottom: 25px;
+        }
+
+        .detail-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: rgba(181, 69, 7, 0.9);
+            margin-bottom: 15px;
+            border-bottom: 2px solid #f0f0f0;
+            padding-bottom: 8px;
+        }
+
+        .detail-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+        }
+
+        .detail-item {
+            background-color: #f8f9fa;
+            padding: 15px;
+            border-radius: 8px;
+        }
+
+        .detail-label {
+            font-size: 0.9rem;
+            color: #666;
+            margin-bottom: 5px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .detail-value {
+            font-weight: 600;
+            color: #333;
+        }
+
+        .items-list {
+            list-style: none;
+        }
+
+        .items-list li {
+            padding: 10px 0;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .items-list li:last-child {
+            border-bottom: none;
+        }
+
+        .item-info {
+            flex: 1;
+        }
+
+        .item-name {
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .item-details {
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        .item-total {
+            font-weight: 600;
+            color: rgba(181, 69, 7, 0.9);
+        }
+
+        /* Empty State */
+        .empty-state {
+            text-align: center;
+            padding: 60px 20px;
+            color: #666;
+        }
+
+        .empty-state i {
+            font-size: 4rem;
+            margin-bottom: 20px;
+            color: #ccc;
+        }
+
+        .empty-state h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+
+        .empty-state p {
+            margin-bottom: 20px;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes slideIn {
+            from { 
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Footer */
+        footer {
+            background-color: rgba(181, 69, 7, 0.9);
+            color: white;
+            padding: 1rem 0;
+            text-align: center;
+            width: 100%;
+            margin-top: auto;
+        }
+
+        footer p {
+            margin: 0.5rem 0;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .main-container {
+                padding: 10px;
+                margin-top: 80px;
+            }
+            
+            .page-header {
+                padding: 20px 15px;
+            }
+            
+            .page-title {
+                font-size: 2rem;
+            }
+            
+            .filter-row {
+                grid-template-columns: 1fr;
+            }
+            
+            .stats-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .transactions-table {
+                font-size: 0.9rem;
+            }
+            
+            .transactions-table th,
+            .transactions-table td {
+                padding: 10px 8px;
+            }
+            
+            .modal-content {
+                width: 95%;
+                margin: 10% auto;
+            }
+            
+            .modal-body {
+                padding: 20px;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+        }
+
+        @media print {
+            header, footer, .filter-controls, .modal {
+                display: none;
+            }
+            
+            body {
+                background-color: white;
+            }
+            
+            .main-container {
+                margin: 0;
+                padding: 0;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav class="navbar">
+                <a href="#" class="logo">Wedang<span>Ronde</span></a>
+                <ul class="nav-links">
+                    <li><a href="./index.html">Beranda</a></li>
+                    <li><a href="./profile.html">Profil</a></li>
+                    <li><a href="./about.html">Tentang Kami</a></li>
+                    <li><a href="./katalog.html">Katalog</a></li>
+                    <li><a href="./pembayaran.html">Pembayaran</a></li>
+                    <li><a href="./transaksi.html">Transaksi</a></li>
+                    <li><a href="./rekaptransaksi.html">Riwayat Transaksi</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="main-container">
+        <!-- Page Header -->
+        <div class="page-header">
+            <h1 class="page-title">
+                <i class="fas fa-history"></i>
+                Rekap Transaksi
+            </h1>
+            <p class="page-subtitle">Riwayat lengkap semua transaksi Anda</p>
+        </div>
+
+        <!-- Filter Controls -->
+        <div class="filter-controls">
+            <div class="filter-row">
+                <div class="filter-group">
+                    <label class="filter-label">Tanggal Dari</label>
+                    <input type="date" id="dateFrom" class="filter-input">
+                </div>
+                <div class="filter-group">
+                    <label class="filter-label">Tanggal Sampai</label>
+                    <input type="date" id="dateTo" class="filter-input">
+                </div>
+                <div class="filter-group">
+                    <label class="filter-label">Status</label>
+                    <select id="statusFilter" class="filter-input">
+                        <option value="">Semua Status</option>
+                        <option value="confirmed">Terkonfirmasi</option>
+                        <option value="pending">Pending</option>
+                        <option value="cancelled">Dibatalkan</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label class="filter-label">Metode Pembayaran</label>
+                    <select id="paymentFilter" class="filter-input">
+                        <option value="">Semua Metode</option>
+                        <option value="cash">Bayar Tunai</option>
+                        <option value="transfer">Transfer Bank</option>
+                        <option value="ewallet">E-Wallet</option>
+                        <option value="qris">QRIS</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <button onclick="applyFilters()" class="btn btn-primary">
+                        <i class="fas fa-filter"></i> Filter
+                    </button>
+                </div>
+                <div class="filter-group">
+                    <button onclick="resetFilters()" class="btn btn-secondary">
+                        <i class="fas fa-undo"></i> Reset
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Statistics -->
+        <div class="stats-container">
+            <div class="stat-card">
+                <div class="stat-icon">
+                    <i class="fas fa-receipt"></i>
+                </div>
+                <div class="stat-number" id="totalTransactions">0</div>
+                <div class="stat-label">Total Transaksi</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon">
+                    <i class="fas fa-money-bill-wave"></i>
+                </div>
+                <div class="stat-number" id="totalRevenue">Rp 0</div>
+                <div class="stat-label">Total Pendapatan</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon">
+                    <i class="fas fa-chart-line"></i>
+                </div>
+                <div class="stat-number" id="avgTransaction">Rp 0</div>
+                <div class="stat-label">Rata-rata Transaksi</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon">
+                    <i class="fas fa-calendar-day"></i>
+                </div>
+                <div class="stat-number" id="todayTransactions">0</div>
+                <div class="stat-label">Transaksi Hari Ini</div>
+            </div>
+        </div>
+
+        <!-- Transactions Table -->
+        <div class="transactions-section">
+            <div class="section-header">
+                <span>
+                    <i class="fas fa-list"></i>
+                    Daftar Transaksi
+                </span>
+                <button onclick="exportData()" class="btn btn-secondary">
+                    <i class="fas fa-download"></i> Export
+                </button>
+            </div>
+            <div class="transactions-table-container">
+                <table class="transactions-table">
+                    <thead>
+                        <tr>
+                            <th>ID Transaksi</th>
+                            <th>Tanggal</th>
+                            <th>Pelanggan</th>
+                            <th>Items</th>
+                            <th>Total</th>
+                            <th>Metode Pembayaran</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody id="transactionsTableBody">
+                        <!-- Transactions will be populated here -->
+                    </tbody>
+                </table>
+                <div id="emptyState" class="empty-state" style="display: none;">
+                    <i class="fas fa-inbox"></i>
+                    <h3>Belum Ada Transaksi</h3>
+                    <p>Transaksi yang telah dilakukan akan muncul di sini</p>
+                    <a href="./katalog.html" class="btn btn-primary">
+                        <i class="fas fa-utensils"></i> Mulai Pesan
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Transaction Detail Modal -->
+    <div id="transactionModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>
+                    <i class="fas fa-receipt"></i>
+                    Detail Transaksi
+                </h2>
+                <span class="close" onclick="closeModal()">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div class="detail-section">
+                    <h3 class="detail-title">Informasi Transaksi</h3>
+                    <div class="detail-grid">
+                        <div class="detail-item">
+                            <div class="detail-label">ID Transaksi</div>
+                            <div class="detail-value" id="modalTransactionId">-</div>
+                        </div>
+                        <div class="detail-item">
+                            <div class="detail-label">Tanggal & Waktu</div>
+                            <div class="detail-value" id="modalTransactionDate">-</div>
+                        </div>
+                        <div class="detail-item">
+                            <div class="detail-label">Status</div>
+                            <div class="detail-value" id="modalTransactionStatus">-</div>
+                        </div>
+                        <div class="detail-item">
+                            <div class="detail-label">Metode Pembayaran</div>
+                            <div class="detail-value" id="modalPaymentMethod">-</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="detail-section">
+                    <h3 class="detail-title">Informasi Pelanggan</h3>
+                    <div class="detail-grid">
+                        <div class="detail-item">
+                            <div class="detail-label">Nama</div>
+                            <div class="detail-value" id="modalCustomerName">-</div>
+                        </div>
+                        <div class="detail-item">
+                            <div class="detail-label">Telepon</div>
+                            <div class="detail-value" id="modalCustomerPhone">-</div>
+                        </div>
+                        <div class="detail-item">
+                            <div class="detail-label">Email</div>
+                            <div class="detail-value" id="modalCustomerEmail">-</div>
+                        </div>
+                        <div class="detail-item">
+                            <div class="detail-label">Alamat</div>
+                            <div class="detail-value" id="modalCustomerAddress">-</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="detail-section">
+                    <h3 class="detail-title">Item Pesanan</h3>
+                    <ul id="modalOrderItems" class="items-list">
+                        <!-- Items will be populated here -->
+                    </ul>
+                </div>
+
+                <div class="detail-section">
+                    <h3 class="detail-title">Ringkasan Pembayaran</h3>
+                    <div class="detail-grid">
+                        <div class="detail-item">
+                            <div class="detail-label">Subtotal</div>
+                            <div class="detail-value" id="modalSubtotal">Rp 0</div>
+                        </div>
+                        <div class="detail-item">
+                            <div class="detail-label">Pajak</div>
+                            <div class="detail-value" id="modalTax">Rp 0</div>
+                        </div>
+                        <div class="detail-item">
+                            <div class="detail-label">Ongkir</div>
+                            <div class="detail-value" id="modalShipping">Rp 0</div>
+                        </div>
+                        <div class="detail-item" style="background-color: #e8f5e8;">
+                            <div class="detail-label">Total</div>
+                            <div class="detail-value" id="modalTotal" style="color: #28a745; font-size: 1.2rem;">Rp 0</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 Wedang Ronde. All rights reserved.</p>
+        <p>Kelola transaksi Anda dengan mudah dan efisien</p>
+    </footer>
+
+    <script>
+        // Global variables
+        let allTransactions = [];
+        let filteredTransactions = [];
+
+        // Format currency
+        function formatCurrency(amount) {
+            return new Intl.NumberFormat('id-ID', {
+                style: 'currency',
+                currency: 'IDR',
+                minimumFractionDigits: 0,
+                maximumFractionDigits: 0
+            }).format(amount);
+        }
+
+        // Format date
+        function formatDate(dateString) {
+            const date = new Date(dateString);
+            return date.toLocaleDateString('id-ID', {
+                year: 'numeric',
+                month: 'short',
+                day: 'numeric',
+                hour: '2-digit',
+                minute: '2-digit'
+            });
+        }
+
+        // Get payment method display name
+        function getPaymentMethodName(method) {
+            const methods = {
+                'cash': 'Bayar Tunai',
+                'transfer': 'Transfer Bank',
+                'ewallet': 'E-Wallet',
+                'qris': 'QRIS'
+            };
+            return methods[method] || method;
+        }
+
+        // Get payment method class
+        function getPaymentMethodClass(method) {
+            return `payment-${method}`;
+        }
+
+        // Get status display name
+        function getStatusName(status) {
+            const statuses = {
+                'confirmed': 'Terkonfirmasi',
+                'pending': 'Pending',
+                'cancelled': 'Dibatalkan'
+            };
+            return statuses[status] || status;
+        }
+
+        // Get status class
+        function getStatusClass(status) {
+            return `status-${status}`;
+        }
+
+        // Load transactions from localStorage
+        function loadTransactions() {
+            const stored = localStorage.getItem('transactionHistory');
+            if (stored) {
+                try {
+                    allTransactions = JSON.parse(stored);
+                } catch (error) {
+                    console.error('Error loading transactions:', error);
+                    allTransactions = [];
+                }
+            } else {
+                // Create sample data for demo
+                createSampleTransactions();
+            }
+            
+            // Check for new transaction from current session
+            const currentTransaction = localStorage.getItem('currentTransaction');
+            if (currentTransaction) {
+                try {
+                    const newTransaction = JSON.parse(currentTransaction);
+                    // Check if this transaction is already in history
+                    const exists = allTransactions.some(tx => tx.id === newTransaction.id);
+                    if (!exists) {
+                        allTransactions.unshift(newTransaction);
+                        saveTransactions();
+                    }
+                } catch (error) {
+                    console.error('Error processing current transaction:', error);
+                }
+            }
+            
+            filteredTransactions = [...allTransactions];
+            updateDisplay();
+        }
+
+        // Save transactions to localStorage
+        function saveTransactions() {
+            localStorage.setItem('transactionHistory', JSON.stringify(allTransactions));
+        }
+
+        // Create sample transactions for demo
+        function createSampleTransactions() {
+            const sampleCustomers = [
+                { name: 'John Doe', phone: '081234567890', email: 'john@example.com', address: 'Jl. Contoh No. 123, Jakarta' },
+                { name: 'Jane Smith', phone: '081234567891', email: 'jane@example.com', address: 'Jl. Merdeka No. 456, Bandung' },
+                { name: 'Ahmad Rahman', phone: '081234567892', email: 'ahmad@example.com', address: 'Jl. Sudirman No. 789, Surabaya' }
+            ];
+
+            const sampleItems = [
+                { name: 'Wedang Ronde Original', price: 15000 },
+                { name: 'Wedang Jahe', price: 12000 },
+                { name: 'Ketan Hitam', price: 10000 },
+                { name: 'Wedang Bajigur', price: 14000 },
+                { name: 'Es Dawet', price: 13000 },
+                { name: 'Bubur Sumsum', price: 11000 }
+            ];
+
+            const paymentMethods = ['cash', 'transfer', 'ewallet', 'qris'];
+            const statuses = ['confirmed', 'pending', 'cancelled'];
+
+            allTransactions = [];
+            
+            // Generate sample transactions for the last 30 days
+            for (let i = 0; i < 15; i++) {
+                const daysAgo = Math.floor(Math.random() * 30);
+                const transactionDate = new Date();
+                transactionDate.setDate(transactionDate.getDate() - daysAgo);
+                
+                const customer = sampleCustomers[Math.floor(Math.random() * sampleCustomers.length)];
+                const numItems = Math.floor(Math.random() * 4) + 1;
+                const items = [];
+                let subtotal = 0;
+                
+                for (let j = 0; j < numItems; j++) {
+                    const item = sampleItems[Math.floor(Math.random() * sampleItems.length)];
+                    const quantity = Math.floor(Math.random() * 3) + 1;
+                    items.push({
+                        name: item.name,
+                        price: item.price,
+                        quantity: quantity
+                    });
+                    subtotal += item.price * quantity;
+                }
+                
+                const tax = Math.floor(subtotal * 0.1);
+                const shipping = Math.floor(Math.random() * 10000) + 5000;
+                const total = subtotal + tax + shipping;
+                
+                const transaction = {
+                    id: 'TXN-' + (Date.now() + i),
+                    timestamp: transactionDate.toISOString(),
+                    customer: {
+                        name: customer.name,
+                        phone: customer.phone,
+                        email: customer.email,
+                        address: customer.address,
+                        notes: Math.random() > 0.5 ? 'Mohon hangatkan' : ''
+                    },
+                    items: items,
+                    subtotal: subtotal,
+                    tax: tax,
+                    shipping: shipping,
+                    total: total,
+                    paymentMethod: paymentMethods[Math.floor(Math.random() * paymentMethods.length)],
+                    status: statuses[Math.floor(Math.random() * statuses.length)]
+                };
+                
+                allTransactions.push(transaction);
+            }
+            
+            // Sort by date (newest first)
+            allTransactions.sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp));
+            saveTransactions();
+        }
+
+        // Update display
+        function updateDisplay() {
+            updateStatistics();
+            updateTransactionsTable();
+        }
+
+        // Update statistics
+        function updateStatistics() {
+            const total = filteredTransactions.length;
+            const revenue = filteredTransactions.reduce((sum, tx) => sum + tx.total, 0);
+            const avgTransaction = total > 0 ? revenue / total : 0;
+            
+            // Today's transactions
+            const today = new Date();
+            const todayStart = new Date(today.getFullYear(), today.getMonth(), today.getDate());
+            const todayTransactions = filteredTransactions.filter(tx => 
+                new Date(tx.timestamp) >= todayStart
+            );
+            
+            document.getElementById('totalTransactions').textContent = total;
+            document.getElementById('totalRevenue').textContent = formatCurrency(revenue);
+            document.getElementById('avgTransaction').textContent = formatCurrency(avgTransaction);
+            document.getElementById('todayTransactions').textContent = todayTransactions.length;
+        }
+
+        // Update transactions table
+        function updateTransactionsTable() {
+            const tbody = document.getElementById('transactionsTableBody');
+            const emptyState = document.getElementById('emptyState');
+            
+            if (filteredTransactions.length === 0) {
+                tbody.innerHTML = '';
+                emptyState.style.display = 'block';
+                return;
+            }
+            
+            emptyState.style.display = 'none';
+            
+            tbody.innerHTML = filteredTransactions.map(transaction => `
+                <tr>
+                    <td>
+                        <span class="transaction-id" onclick="showTransactionDetail('${transaction.id}')">
+                            ${transaction.id}
+                        </span>
+                    </td>
+                    <td>${formatDate(transaction.timestamp)}</td>
+                    <td>${transaction.customer.name}</td>
+                    <td>${transaction.items.length} item${transaction.items.length > 1 ? 's' : ''}</td>
+                    <td>${formatCurrency(transaction.total)}</td>
+                    <td>
+                        <span class="payment-method ${getPaymentMethodClass(transaction.paymentMethod)}">
+                            ${getPaymentMethodName(transaction.paymentMethod)}
+                        </span>
+                    </td>
+                    <td>
+                        <span class="status-badge ${getStatusClass(transaction.status)}">
+                            ${getStatusName(transaction.status)}
+                        </span>
+                    </td>
+                </tr>
+            `).join('');
+        }
+
+        // Apply filters
+        function applyFilters() {
+            const dateFrom = document.getElementById('dateFrom').value;
+            const dateTo = document.getElementById('dateTo').value;
+            const statusFilter = document.getElementById('statusFilter').value;
+            const paymentFilter = document.getElementById('paymentFilter').value;
+            
+            filteredTransactions = allTransactions.filter(transaction => {
+                const transactionDate = new Date(transaction.timestamp);
+                const matchesDate = (!dateFrom || transactionDate >= new Date(dateFrom)) &&
+                                  (!dateTo || transactionDate <= new Date(dateTo + 'T23:59:59'));
+                const matchesStatus = !statusFilter || transaction.status === statusFilter;
+                const matchesPayment = !paymentFilter || transaction.paymentMethod === paymentFilter;
+                
+                return matchesDate && matchesStatus && matchesPayment;
+            });
+            
+            updateDisplay();
+        }
+
+        // Reset filters
+        function resetFilters() {
+            document.getElementById('dateFrom').value = '';
+            document.getElementById('dateTo').value = '';
+            document.getElementById('statusFilter').value = '';
+            document.getElementById('paymentFilter').value = '';
+            
+            filteredTransactions = [...allTransactions];
+            updateDisplay();
+        }
+
+        // Show transaction detail modal
+        function showTransactionDetail(transactionId) {
+            const transaction = allTransactions.find(tx => tx.id === transactionId);
+            if (!transaction) return;
+            
+            // Populate modal with transaction data
+            document.getElementById('modalTransactionId').textContent = transaction.id;
+            document.getElementById('modalTransactionDate').textContent = formatDate(transaction.timestamp);
+            document.getElementById('modalTransactionStatus').textContent = getStatusName(transaction.status);
+            document.getElementById('modalPaymentMethod').textContent = getPaymentMethodName(transaction.paymentMethod);
+            
+            document.getElementById('modalCustomerName').textContent = transaction.customer.name;
+            document.getElementById('modalCustomerPhone').textContent = transaction.customer.phone;
+            document.getElementById('modalCustomerEmail').textContent = transaction.customer.email || '-';
+            document.getElementById('modalCustomerAddress').textContent = transaction.customer.address;
+            
+            // Populate order items
+            const itemsList = document.getElementById('modalOrderItems');
+            itemsList.innerHTML = transaction.items.map(item => `
+                <li>
+                    <div class="item-info">
+                        <div class="item-name">${item.name}</div>
+                        <div class="item-details">${formatCurrency(item.price)} × ${item.quantity}</div>
+                    </div>
+                    <div class="item-total">${formatCurrency(item.price * item.quantity)}</div>
+                </li>
+            `).join('');
+            
+            // Populate payment summary
+            document.getElementById('modalSubtotal').textContent = formatCurrency(transaction.subtotal);
+            document.getElementById('modalTax').textContent = formatCurrency(transaction.tax);
+            document.getElementById('modalShipping').textContent = formatCurrency(transaction.shipping);
+            document.getElementById('modalTotal').textContent = formatCurrency(transaction.total);
+            
+            // Show modal
+            document.getElementById('transactionModal').style.display = 'block';
+        }
+
+        // Close modal
+        function closeModal() {
+            document.getElementById('transactionModal').style.display = 'none';
+        }
+
+        // Export data
+        function exportData() {
+            if (filteredTransactions.length === 0) {
+                alert('Tidak ada data untuk diekspor');
+                return;
+            }
+            
+            // Create CSV content
+            const headers = ['ID Transaksi', 'Tanggal', 'Pelanggan', 'Telepon', 'Email', 'Alamat', 'Items', 'Subtotal', 'Pajak', 'Ongkir', 'Total', 'Metode Pembayaran', 'Status'];
+            const csvContent = [
+                headers.join(','),
+                ...filteredTransactions.map(tx => [
+                    tx.id,
+                    new Date(tx.timestamp).toLocaleString('id-ID'),
+                    `"${tx.customer.name}"`,
+                    tx.customer.phone,
+                    tx.customer.email || '',
+                    `"${tx.customer.address}"`,
+                    tx.items.length,
+                    tx.subtotal,
+                    tx.tax,
+                    tx.shipping,
+                    tx.total,
+                    getPaymentMethodName(tx.paymentMethod),
+                    getStatusName(tx.status)
+                ].join(','))
+            ].join('\n');
+            
+            // Download CSV
+            const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+            const link = document.createElement('a');
+            link.href = URL.createObjectURL(blob);
+            link.download = `rekap-transaksi-${new Date().toISOString().split('T')[0]}.csv`;
+            link.click();
+        }
+
+        // Initialize page
+        window.addEventListener('load', function() {
+            loadTransactions();
+            
+            // Set default date range (last 30 days)
+            const today = new Date();
+            const thirtyDaysAgo = new Date();
+            thirtyDaysAgo.setDate(today.getDate() - 30);
+            
+            document.getElementById('dateTo').value = today.toISOString().split('T')[0];
+            document.getElementById('dateFrom').value = thirtyDaysAgo.toISOString().split('T')[0];
+        });
+
+        // Close modal when clicking outside
+        window.addEventListener('click', function(event) {
+            const modal = document.getElementById('transactionModal');
+            if (event.target === modal) {
+                closeModal();
+            }
+        });
+
+        // Handle escape key to close modal
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                closeModal();
+            }
+        });
+
+        // Auto-refresh every 30 seconds to check for new transactions
+        setInterval(function() {
+            const currentTransaction = localStorage.getItem('currentTransaction');
+            if (currentTransaction) {
+                try {
+                    const newTransaction = JSON.parse(currentTransaction);
+                    const exists = allTransactions.some(tx => tx.id === newTransaction.id);
+                    if (!exists) {
+                        allTransactions.unshift(newTransaction);
+                        filteredTransactions = [...allTransactions];
+                        saveTransactions();
+                        updateDisplay();
+                        
+                        // Show notification
+                        showNotification('Transaksi baru ditambahkan!');
+                    }
+                } catch (error) {
+                    console.error('Error checking for new transactions:', error);
+                }
+            }
+        }, 30000);
+
+        // Show notification
+        function showNotification(message) {
+            // Create notification element
+            const notification = document.createElement('div');
+            notification.style.cssText = `
+                position: fixed;
+                top: 100px;
+                right: 20px;
+                background: linear-gradient(135deg, #28a745, #20c997);
+                color: white;
+                padding: 15px 20px;
+                border-radius: 8px;
+                box-shadow: 0 5px 15px rgba(40, 167, 69, 0.3);
+                z-index: 3000;
+                font-weight: 600;
+                animation: slideInRight 0.3s ease-out;
+            `;
+            notification.textContent = message;
+            
+            // Add to page
+            document.body.appendChild(notification);
+            
+            // Remove after 3 seconds
+            setTimeout(() => {
+                notification.style.animation = 'slideOutRight 0.3s ease-in';
+                setTimeout(() => {
+                    document.body.removeChild(notification);
+                }, 300);
+            }, 3000);
+        }
+
+        // Add CSS for notification animations
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes slideInRight {
+                from {
+                    transform: translateX(100%);
+                    opacity: 0;
+                }
+                to {
+                    transform: translateX(0);
+                    opacity: 1;
+                }
+            }
+            
+            @keyframes slideOutRight {
+                from {
+                    transform: translateX(0);
+                    opacity: 1;
+                }
+                to {
+                    transform: translateX(100%);
+                    opacity: 0;
+                }
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+</body>
+</html>

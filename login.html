@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Warung Wedang Ronde - Login</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        body {
+            background-color: #f5e6d8;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), 
+                url('https://cdnjs.cloudflare.com/ajax/libs/placeholders/4.0.0/img/placeholder.png');
+            background-size: cover;
+            background-position: center;
+            padding: 20px;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 400px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+        }
+        
+<<<<<<< HEAD
+        .tabs {
+            display: flex;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        .tab {
+            flex: 1;
+            text-align: center;
+            padding: 15px;
+            cursor: pointer;
+            font-weight: 600;
+            color: rgba(181, 69, 7, 0.9);
+            transition: all 0.3s ease;
+        }
+        
+        .tab.active {
+            background-color:rgba(181, 69, 7, 0.9);
+            color: #fff;
+        }
+        
+        .tab:hover:not(.active) {
+            background-color: #f5e6d8;
+        }
+        
+=======
+>>>>>>> 7b73176 (update)
+        .form-container {
+            padding: 30px;
+        }
+        
+        .form-title {
+            text-align: center;
+            margin-bottom: 20px;
+<<<<<<< HEAD
+            color:rgba(181, 69, 7, 0.9);
+=======
+            color: rgba(181, 69, 7, 0.9);
+>>>>>>> 7b73176 (update)
+        }
+        
+        .form-title h2 {
+            font-size: 24px;
+            margin-bottom: 5px;
+        }
+        
+        .form-title p {
+            font-size: 14px;
+            color: #666;
+        }
+        
+        .input-group {
+            margin-bottom: 20px;
+        }
+        
+        .input-group label {
+            display: block;
+            margin-bottom: 5px;
+            color: #333;
+            font-weight: 500;
+            font-size: 14px;
+        }
+        
+        .input-group input {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 14px;
+            transition: border-color 0.3s;
+        }
+        
+        .input-group input:focus {
+            outline: none;
+            border-color: rgba(181, 69, 7, 0.9);
+        }
+        
+        .btn {
+            width: 100%;
+            padding: 12px;
+<<<<<<< HEAD
+            background-color:rgba(181, 69, 7, 0.9);
+=======
+            background-color: rgba(181, 69, 7, 0.9);
+>>>>>>> 7b73176 (update)
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        .btn:hover {
+<<<<<<< HEAD
+            background-color:rgba(181, 69, 7, 0.9);
+=======
+            background-color: rgba(161, 49, 0, 0.9);
+        }
+        
+        .btn:disabled {
+            background-color: #ccc;
+            cursor: not-allowed;
+>>>>>>> 7b73176 (update)
+        }
+        
+        .form-footer {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 14px;
+            color: #666;
+        }
+        
+        .form-footer a {
+<<<<<<< HEAD
+            color:rgba(181, 69, 7, 0.9);
+=======
+            color: rgba(181, 69, 7, 0.9);
+>>>>>>> 7b73176 (update)
+            text-decoration: none;
+            font-weight: 500;
+        }
+        
+        .form-footer a:hover {
+            text-decoration: underline;
+        }
+        
+        .logo {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        
+        .logo img {
+            height: 80px;
+        }
+        
+        .logo h1 {
+            color: rgba(181, 69, 7, 0.9);
+            font-size: 20px;
+            margin-top: 10px;
+        }
+        
+<<<<<<< HEAD
+        .form-content {
+            display: none;
+        }
+        
+        .form-content.active {
+            display: block;
+=======
+        .error-message {
+            color: #dc3545;
+            font-size: 12px;
+            margin-top: 5px;
+            text-align: left;
+            display: none;
+        }
+        
+        .success-message {
+            background-color: #d4edda;
+            color: #155724;
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 15px;
+            display: none;
+            text-align: center;
+        }
+        
+        .alert-error {
+            background-color: #f8d7da;
+            color: #721c24;
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 15px;
+            display: none;
+            text-align: center;
+        }
+
+        .reset-link {
+            display: block;
+            text-align: right;
+            font-size: 13px;
+            color: rgba(181, 69, 7, 0.9);
+            text-decoration: none;
+            margin-top: -15px;
+            margin-bottom: 20px;
+        }
+
+        .reset-link:hover {
+            text-decoration: underline;
+        }
+        
+        .loading {
+            display: none;
+            text-align: center;
+            color: #666;
+            font-size: 14px;
+            margin-top: 10px;
+>>>>>>> 7b73176 (update)
+        }
+        
+        /* Responsive design */
+        @media (max-width: 480px) {
+            .container {
+                max-width: 100%;
+            }
+            
+            .form-container {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+<<<<<<< HEAD
+        <div class="tabs">
+            <div class="tab active" id="login-tab">Login</div>
+            <div class="tab" id="register-tab">Registrasi</div>
+        </div>
+        
+        <div class="form-container">
+            <!-- Login Form -->
+            <div class="form-content active" id="login-form">
+                <div class="logo">
+                    <img src= "css/—Pngtree—wedang ronde traditional drink indonesia_8130577.png" alt="Logo Wedang Ronde">
+                    <h1>Warung Wedang Ronde</h1>
+                </div>
+                
+                <div class="form-title">
+                    <h2>Selamat Datang Kembali!</h2>
+                    <p>Masuk ke akun Anda untuk menikmati wedang ronde terbaik</p>
+                </div>
+                
+                <form id="loginForm">
+                    <div class="input-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" placeholder="Masukkan email Anda" required>
+                    </div>
+                    
+                    <div class="input-group">
+                        <label for="password">Password</label>
+                        <input type="password" id="password" name="password" placeholder="Masukkan password Anda" required>
+                    </div>
+                    
+                    <button type="submit" class="btn">Masuk</button>
+                </form>
+                
+                <div class="form-footer">
+                    <p>Belum punya akun? <a href="#" id="show-register">Daftar sekarang</a></p>
+                </div>
+            </div>
+            
+            <!-- Register Form -->
+            <div class="form-content" id="register-form">
+                <div class="logo">
+                    <img src="https://cdnjs.cloudflare.com/ajax/libs/placeholders/4.0.0/img/placeholder.png" alt="Logo Wedang Ronde">
+                    <h1>Warung Wedang Ronde</h1>
+                </div>
+                
+                <div class="form-title">
+                    <h2>Buat Akun Baru</h2>
+                    <p>Daftar untuk mendapatkan pengalaman wedang ronde terbaik</p>
+                    <p></p>
+                </div>
+
+                
+                <form id="registerForm">
+                    <div class="input-group">
+                        <label for="name">Nama Lengkap</label>
+                        <input type="text" id="name" name="name" placeholder="Masukkan nama lengkap Anda" required>
+                    </div>
+                    
+                    <div class="input-group">
+                        <label for="reg-email">Email</label>
+                        <input type="email" id="reg-email" name="reg-email" placeholder="Masukkan email Anda" required>
+                    </div>
+                    
+                    <div class="input-group">
+                        <label for="phone">Nomor Telepon</label>
+                        <input type="tel" id="phone" name="phone" placeholder="Masukkan nomor telepon Anda" required>
+                    </div>
+                    
+                    <div class="input-group">
+                        <label for="reg-password">Password</label>
+                        <input type="password" id="reg-password" name="reg-password" placeholder="Buat password" required>
+                    </div>
+                    
+                    <div class="input-group">
+                        <label for="confirm-password">Konfirmasi Password</label>
+                        <input type="password" id="confirm-password" name="confirm-password" placeholder="Konfirmasi password Anda" required>
+                    </div>
+                    
+                    <button type="submit" class="btn">Daftar</button>
+                </form>
+                
+                <div class="form-footer">
+                    <p>Sudah punya akun? <a href="#" id="show-login">Masuk sekarang</a></p>
+                </div class="nav-links">
+                    <a href="index.html" class="active">Beranda</a>              
+                    <a href="#">Tentang Kami</a>              
+                    <a href="#">Kontak</a>              
+                    <a href="login.html">Logout</a>              
+=======
+        <div class="form-container">
+            <div class="logo">
+                <img src="css/—Pngtree—wedang ronde traditional drink indonesia_8130577.png" alt="Wedang Ronde" style="height: 80px;">
+                <h1>Warung Wedang Ronde</h1>
+            </div>
+            
+            <div class="form-title">
+                <h2>Selamat Datang Kembali!</h2>
+                <p>Masuk ke akun Anda untuk menikmati wedang ronde terbaik</p>
+            </div>
+            
+            <div class="success-message" id="login-success"></div>
+            <div class="alert-error" id="login-error"></div>
+            
+            <form id="loginForm">
+                <div class="input-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" placeholder="Masukkan email Anda" required>
+                    <div class="error-message" id="email-error"></div>
+                </div>
+                
+                <div class="input-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" placeholder="Masukkan password Anda" required>
+                    <div class="error-message" id="password-error"></div>
+                </div>
+                
+                <a href="reset.html" class="reset-link">Lupa password?</a>
+                
+                <button type="submit" class="btn" id="submitBtn">Masuk</button>
+                <div class="loading" id="loading">Sedang memproses...</div>
+            </form>
+            
+            <div class="form-footer">
+                <p>Belum punya akun? <a href="registrasi.html">Daftar sekarang</a></p>
+>>>>>>> 7b73176 (update)
+            </div>
+        </div>
+    </div>
+    
+    <script>
+<<<<<<< HEAD
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+
+    
+            
+            // Validasi sederhana
+            if (!email || !password) {
+                alert('Semua field harus diisi!');
+                return;
+            }
+            
+            // Simulasi autentikasi sukses tanpa alert
+            console.log('Login berhasil! Mengarahkan ke halaman utama...');
+            
+            // Redirect setelah sedikit delay agar terasa smooth
+            setTimeout(() => {
+                window.location.href = 'index.html';
+            }, 500); // 500ms (setengah detik)
+              
+        });
+    </script>
+    
+    
+=======
+        // Validasi form login
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Reset messages
+            clearMessages();
+            
+            const formData = new FormData(this);
+            const submitBtn = document.getElementById('submitBtn');
+            const loading = document.getElementById('loading');
+            
+            // Validasi client-side
+            if (!validateForm()) {
+                return;
+            }
+            
+            // Disable submit button dan show loading
+            submitBtn.disabled = true;
+            loading.style.display = 'block';
+            
+            // Kirim data dengan AJAX
+            fetch('login.php', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    showSuccessMessage(data.message || 'Login berhasil! Selamat datang di Warung Wedang Ronde.');
+                    
+                    // Redirect setelah 2 detik
+                    setTimeout(() => {
+                        if (data.redirect) {
+                            window.location.href = data.redirect;
+                        } else {
+                            window.location.href = 'index.html';
+                        }
+                    }, 2000);
+                } else {
+                    showErrorMessage(data.message || 'Terjadi kesalahan saat login. Silakan coba lagi.');
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                showErrorMessage('Terjadi kesalahan koneksi. Silakan coba lagi.');
+            })
+            .finally(() => {
+                // Re-enable button dan hide loading
+                submitBtn.disabled = false;
+                loading.style.display = 'none';
+            });
+        });
+
+        // Fungsi validasi form
+        function validateForm() {
+            let isValid = true;
+            
+            const email = document.getElementById('email').value.trim();
+            const password = document.getElementById('password').value.trim();
+            
+            // Validasi email
+            if (!email) {
+                showFieldError('email', 'Email harus diisi');
+                isValid = false;
+            } else if (!isValidEmail(email)) {
+                showFieldError('email', 'Format email tidak valid');
+                isValid = false;
+            }
+            
+            // Validasi password
+            if (!password) {
+                showFieldError('password', 'Password harus diisi');
+                isValid = false;
+            } else if (password.length < 6) {
+                showFieldError('password', 'Password minimal 6 karakter');
+                isValid = false;
+            }
+            
+            return isValid;
+        }
+
+        // Fungsi validasi email
+        function isValidEmail(email) {
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return emailRegex.test(email);
+        }
+
+        // Fungsi menampilkan error pada field
+        function showFieldError(fieldName, message) {
+            const errorElement = document.getElementById(fieldName + '-error');
+            errorElement.textContent = message;
+            errorElement.style.display = 'block';
+            
+            const inputElement = document.getElementById(fieldName);
+            inputElement.style.borderColor = '#dc3545';
+        }
+
+        // Fungsi menampilkan pesan sukses
+        function showSuccessMessage(message) {
+            const successElement = document.getElementById('login-success');
+            successElement.textContent = message;
+            successElement.style.display = 'block';
+        }
+
+        // Fungsi menampilkan pesan error
+        function showErrorMessage(message) {
+            const errorElement = document.getElementById('login-error');
+            errorElement.textContent = message;
+            errorElement.style.display = 'block';
+        }
+
+        // Fungsi clear semua pesan
+        function clearMessages() {
+            // Clear field errors
+            const errorMessages = document.querySelectorAll('.error-message');
+            errorMessages.forEach(error => {
+                error.style.display = 'none';
+                error.textContent = '';
+            });
+            
+            // Clear general messages
+            document.getElementById('login-success').style.display = 'none';
+            document.getElementById('login-error').style.display = 'none';
+            
+            // Reset border colors
+            const inputs = document.querySelectorAll('input');
+            inputs.forEach(input => {
+                input.style.borderColor = '#ddd';
+            });
+        }
+
+        // Clear error saat user mulai mengetik
+        document.getElementById('email').addEventListener('input', function() {
+            document.getElementById('email-error').style.display = 'none';
+            this.style.borderColor = '#ddd';
+        });
+
+        document.getElementById('password').addEventListener('input', function() {
+            document.getElementById('password-error').style.display = 'none';
+            this.style.borderColor = '#ddd';
+        });
+
+        // Functions untuk link
+        function showResetMessage() {
+            alert('Fitur reset password akan segera tersedia. Silakan hubungi admin untuk bantuan.');
+        }
+
+        function showRegisterMessage() {
+            alert('Halaman registrasi akan segera tersedia.');
+        }
+    </script>
+>>>>>>> 7b73176 (update)
+</body>
+</html>

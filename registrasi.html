@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Warung Wedang Ronde - Registrasi</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        body {
+            background-color: #f5e6d8;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), 
+                url('https://cdnjs.cloudflare.com/ajax/libs/placeholders/4.0.0/img/placeholder.png');
+            background-size: cover;
+            background-position: center;
+            padding: 20px;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 400px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+        }
+        
+        .form-container {
+            padding: 30px;
+        }
+        
+        .form-title {
+            text-align: center;
+            margin-bottom: 20px;
+            color: rgba(181, 69, 7, 0.9);
+        }
+        
+        .form-title h2 {
+            font-size: 24px;
+            margin-bottom: 5px;
+        }
+        
+        .form-title p {
+            font-size: 14px;
+            color: #666;
+        }
+        
+        .input-group {
+            margin-bottom: 20px;
+        }
+        
+        .input-group label {
+            display: block;
+            margin-bottom: 5px;
+            color: #333;
+            font-weight: 500;
+            font-size: 14px;
+        }
+        
+        .input-group input {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 14px;
+            transition: border-color 0.3s;
+        }
+        
+        .input-group input:focus {
+            outline: none;
+            border-color: rgba(181, 69, 7, 0.9);
+        }
+        
+        .btn {
+            width: 100%;
+            padding: 12px;
+            background-color: rgba(181, 69, 7, 0.9);
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        .btn:hover {
+            background-color: rgba(161, 49, 0, 0.9);
+        }
+        
+        .btn:disabled {
+            background-color: #ccc;
+            cursor: not-allowed;
+        }
+        
+        .form-footer {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 14px;
+            color: #666;
+        }
+        
+        .form-footer a {
+            color: rgba(181, 69, 7, 0.9);
+            text-decoration: none;
+            font-weight: 500;
+        }
+        
+        .form-footer a:hover {
+            text-decoration: underline;
+        }
+        
+        .logo {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        
+        .logo img {
+            height: 80px;
+        }
+        
+        .logo h1 {
+            color: rgba(181, 69, 7, 0.9);
+            font-size: 20px;
+            margin-top: 10px;
+        }
+        
+        .error-message {
+            color: #dc3545;
+            font-size: 12px;
+            margin-top: 5px;
+            text-align: left;
+            display: none;
+        }
+        
+        .success-message {
+            background-color: #d4edda;
+            color: #155724;
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 15px;
+            display: none;
+            text-align: center;
+        }
+        
+        .alert-error {
+            background-color: #f8d7da;
+            color: #721c24;
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 15px;
+            display: none;
+            text-align: center;
+        }
+        
+        .loading {
+            display: none;
+            text-align: center;
+            color: #666;
+            font-size: 14px;
+            margin-top: 10px;
+        }
+        
+        /* Responsive design */
+        @media (max-width: 480px) {
+            .container {
+                max-width: 100%;
+            }
+            
+            .form-container {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="form-container">
+            <div class="logo">
+                <img src="css/—Pngtree—wedang ronde traditional drink indonesia_8130577.png" alt="Logo Wedang Ronde">
+                <h1>Warung Wedang Ronde</h1>
+            </div>
+            
+            <div class="form-title">
+                <h2>Buat Akun Baru</h2>
+                <p>Daftar untuk mendapatkan pengalaman wedang ronde terbaik</p>
+            </div>
+            
+            <div class="success-message" id="register-success"></div>
+            <div class="alert-error" id="register-error"></div>
+
+            <form id="registerForm">
+                <div class="input-group">
+                    <label for="name">Nama Lengkap</label>
+                    <input type="text" id="name" name="name" placeholder="Masukkan nama lengkap Anda" required>
+                    <div class="error-message" id="name-error"></div>
+                </div>
+                
+                <div class="input-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" placeholder="Masukkan email Anda" required>
+                    <div class="error-message" id="email-error"></div>
+                </div>
+                
+                <div class="input-group">
+                    <label for="phone">Nomor Telepon</label>
+                    <input type="tel" id="phone" name="phone" placeholder="Masukkan nomor telepon Anda" required>
+                    <div class="error-message" id="phone-error"></div>
+                </div>
+                
+                <div class="input-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" placeholder="Buat password" required>
+                    <div class="error-message" id="password-error"></div>
+                </div>
+                
+                <div class="input-group">
+                    <label for="confirm-password">Konfirmasi Password</label>
+                    <input type="password" id="confirm-password" name="confirm-password" placeholder="Konfirmasi password Anda" required>
+                    <div class="error-message" id="confirm-password-error"></div>
+                </div>
+                
+                <button type="submit" class="btn" id="submitBtn">Daftar</button>
+                <div class="loading" id="loading">Sedang memproses...</div>
+            </form>
+            
+            <div class="form-footer">
+                <p>Sudah punya akun? <a href="login.html">Masuk sekarang</a></p>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // Validasi form registrasi
+        document.getElementById('registerForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Reset messages
+            clearMessages();
+            
+            const formData = new FormData(this);
+            const submitBtn = document.getElementById('submitBtn');
+            const loading = document.getElementById('loading');
+            
+            // Validasi client-side
+            if (!validateForm()) {
+                return;
+            }
+            
+            // Disable submit button dan show loading
+            submitBtn.disabled = true;
+            loading.style.display = 'block';
+            
+            // Kirim data dengan AJAX
+            fetch('registrasi.php', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    // Tampilkan pesan sukses
+                    showSuccess(data.message);
+                    
+                    // Reset form
+                    document.getElementById('registerForm').reset();
+                    
+                    // Redirect ke halaman login setelah delay
+                    setTimeout(() => {
+                        window.location.href = 'login.html';
+                    }, 2000);
+                } else {
+                    // Tampilkan pesan error
+                    showError(data.message);
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                showError('Terjadi kesalahan. Silakan coba lagi.');
+            })
+            .finally(() => {
+                // Enable submit button dan hide loading
+                submitBtn.disabled = false;
+                loading.style.display = 'none';
+            });
+        });
+        
+        // Validasi form client-side
+        function validateForm() {
+            const name = document.getElementById('name').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const phone = document.getElementById('phone').value.trim();
+            const password = document.getElementById('password').value;
+            const confirmPassword = document.getElementById('confirm-password').value;
+            
+            let isValid = true;
+            
+            if (!name) {
+                showFieldError('name-error', 'Nama harus diisi');
+                isValid = false;
+            }
+            
+            if (!email) {
+                showFieldError('email-error', 'Email harus diisi');
+                isValid = false;
+            } else if (!isValidEmail(email)) {
+                showFieldError('email-error', 'Format email tidak valid');
+                isValid = false;
+            }
+            
+            if (!phone) {
+                showFieldError('phone-error', 'Nomor telepon harus diisi');
+                isValid = false;
+            }
+            
+            if (!password) {
+                showFieldError('password-error', 'Password harus diisi');
+                isValid = false;
+            } else if (password.length < 6) {
+                showFieldError('password-error', 'Password minimal 6 karakter');
+                isValid = false;
+            }
+            
+            if (!confirmPassword) {
+                showFieldError('confirm-password-error', 'Konfirmasi password harus diisi');
+                isValid = false;
+            } else if (password !== confirmPassword) {
+                showFieldError('confirm-password-error', 'Password tidak cocok');
+                isValid = false;
+            }
+            
+            return isValid;
+        }
+        
+        // Fungsi helper
+        function showFieldError(elementId, message) {
+            const errorElement = document.getElementById(elementId);
+            errorElement.textContent = message;
+            errorElement.style.display = 'block';
+        }
+        
+        function showSuccess(message) {
+            const successElement = document.getElementById('register-success');
+            successElement.textContent = message;
+            successElement.style.display = 'block';
+        }
+        
+        function showError(message) {
+            const errorElement = document.getElementById('register-error');
+            errorElement.textContent = message;
+            errorElement.style.display = 'block';
+        }
+        
+        function clearMessages() {
+            // Clear field errors
+            const errorElements = document.querySelectorAll('.error-message');
+            errorElements.forEach(element => {
+                element.textContent = '';
+                element.style.display = 'none';
+            });
+            
+            // Clear global messages
+            document.getElementById('register-success').style.display = 'none';
+            document.getElementById('register-error').style.display = 'none';
+        }
+        
+        function isValidEmail(email) {
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return emailRegex.test(email);
+        }
+    </script>
+</body>
+</html>
